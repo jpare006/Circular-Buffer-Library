@@ -15,7 +15,7 @@ typedef struct circular_buf_t circular_buf_t;
 typedef circular_buf_t* cbuf_handle_t;
 
 
-cbuf_handle_t CircularBuffer_Init(void);
+cbuf_handle_t CircularBuffer_Init(uint8_t * buffer, size_t size);
 
 
 #endif /*_CIRUCULAR_BUFFER_H_*/
