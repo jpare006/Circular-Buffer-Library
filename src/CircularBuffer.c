@@ -10,9 +10,9 @@ struct circular_buf_t
 	BOOL full;
 };
 
-struct circular_buf_t* CircularBuffer_Init(void)
+cbuf_handle_t CircularBuffer_Init(void)
 {
-	struct circular_buf_t* cbuf = malloc(sizeof(struct circular_buf_t));
+	cbuf_handle_t cbuf = malloc(sizeof(circular_buf_t));
 
 	return cbuf;
 }

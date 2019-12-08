@@ -13,7 +13,7 @@ TEST_TEAR_DOWN(CircularBuffer)
 
 TEST(CircularBuffer, CreateCbufHandle)
 {	
-	struct circular_buf_t* test_cbuf;
+	cbuf_handle_t test_cbuf;
 	test_cbuf = CircularBuffer_Init();
 
 	TEST_ASSERT_NOT_NULL(test_cbuf);
