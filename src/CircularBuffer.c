@@ -14,6 +14,24 @@ cbuf_handle_t CircularBuffer_Init(uint8_t * buffer, size_t size)
 	cbuf_handle_t cbuf = malloc(sizeof(circular_buf_t));
 	cbuf->buffer = buffer;
 	cbuf->max = size;
+	cbuf->head = 0;
+	cbuf->tail = 0;
+	cbuf->full = FALSE;
 
 	return cbuf;
+}
+
+BOOL CircularBuffer_Empty(cbuf_handle_t cbuf)
+{
+	if(cbuf->head == cbuf->tail)
+	{
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
+BOOL CircularBuffer_Full(cbuf_handle_t cbuf)
+{
+	return cbuf->full;
 }

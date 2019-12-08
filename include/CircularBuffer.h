@@ -6,6 +6,7 @@
 #include <stdlib.h>
 
 typedef int BOOL;
+enum {TRUE = 1, FALSE = 0};
 
 
 //Opaque circular buffer structure, forward declaration
@@ -16,6 +17,7 @@ typedef circular_buf_t* cbuf_handle_t;
 
 
 cbuf_handle_t CircularBuffer_Init(uint8_t * buffer, size_t size);
-
+BOOL CircularBuffer_Empty(cbuf_handle_t cbuf);
+BOOL CircularBuffer_Full(cbuf_handle_t cbuf);
 
 #endif /*_CIRUCULAR_BUFFER_H_*/

@@ -18,9 +18,19 @@ TEST_TEAR_DOWN(CircularBuffer)
 	free(buffer);
 }
 
+
+
 TEST(CircularBuffer, InitCbuf)
 {	
 	test_cbuf = CircularBuffer_Init(buffer, size);
 
 	TEST_ASSERT_NOT_NULL(test_cbuf);
+}
+
+TEST(CircularBuffer, CircularBufferEmptyOnInit)
+{
+	test_cbuf = CircularBuffer_Init(buffer, size);
+
+	TEST_ASSERT_TRUE(CircularBuffer_Empty(test_cbuf));
+	TEST_ASSERT_FALSE(CircularBuffer_Full(test_cbuf));
 }
