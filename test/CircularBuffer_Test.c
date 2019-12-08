@@ -11,7 +11,10 @@ TEST_TEAR_DOWN(CircularBuffer)
 {
 }
 
-TEST(CircularBuffer, StartHere)
-{
-	TEST_FAIL_MESSAGE("Start here");
+TEST(CircularBuffer, CreateCbufHandle)
+{	
+	struct circular_buf_t* test_cbuf;
+	test_cbuf = CircularBuffer_Init();
+
+	TEST_ASSERT_NOT_NULL(test_cbuf);
 }
