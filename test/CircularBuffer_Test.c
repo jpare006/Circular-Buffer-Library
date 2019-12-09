@@ -48,3 +48,8 @@ TEST(CircularBuffer, AddFirstDataElementToCircularBuffer)
 
 	TEST_ASSERT_EQUAL_UINT8(data, buffer[0]);
 }
+
+TEST(CircularBuffer, CapacityMethodReturnsCorrectValue)
+{
+	TEST_ASSERT_EQUAL_size_t(size, CircularBuffer_Capacity(test_cbuf));
+}

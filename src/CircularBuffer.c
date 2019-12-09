@@ -40,3 +40,8 @@ void CircularBuffer_Put(cbuf_handle_t cbuf, uint8_t data)
 {
 	cbuf->buffer[cbuf->head] = data;
 }
+
+size_t CircularBuffer_Capacity(cbuf_handle_t cbuf)
+{
+	return cbuf->max;
+}
