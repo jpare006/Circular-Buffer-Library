@@ -9,6 +9,15 @@ struct circular_buf_t
 	BOOL full;
 };
 
+enum {TRUE = 1, FALSE = 0};
+
+/** Helper Functions **/
+static void advance_pointer(cbuf_handle_t cbuf)
+{
+	cbuf->head += 1;
+}
+/** end **/
+
 cbuf_handle_t CircularBuffer_Init(uint8_t * buffer, size_t size)
 {
 	cbuf_handle_t cbuf = malloc(sizeof(circular_buf_t));
@@ -39,6 +48,8 @@ BOOL CircularBuffer_Full(cbuf_handle_t cbuf)
 void CircularBuffer_Put(cbuf_handle_t cbuf, uint8_t data)
 {
 	cbuf->buffer[cbuf->head] = data;
+
+	advance_pointer(cbuf);
 }
 
 size_t CircularBuffer_Capacity(cbuf_handle_t cbuf)

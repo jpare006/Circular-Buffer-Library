@@ -6,8 +6,6 @@
 #include <stdlib.h>
 
 typedef int BOOL;
-enum {TRUE = 1, FALSE = 0};
-
 
 //Opaque circular buffer structure, forward declaration
 typedef struct circular_buf_t circular_buf_t;
