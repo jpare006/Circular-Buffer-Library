@@ -19,5 +19,6 @@ typedef circular_buf_t* cbuf_handle_t;
 cbuf_handle_t CircularBuffer_Init(uint8_t * buffer, size_t size);
 BOOL CircularBuffer_Empty(cbuf_handle_t cbuf);
 BOOL CircularBuffer_Full(cbuf_handle_t cbuf);
+void CircularBuffer_Put(cbuf_handle_t cbuf, uint8_t data);
 
 #endif /*_CIRUCULAR_BUFFER_H_*/

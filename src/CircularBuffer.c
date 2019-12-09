@@ -35,3 +35,8 @@ BOOL CircularBuffer_Full(cbuf_handle_t cbuf)
 {
 	return cbuf->full;
 }
+
+void CircularBuffer_Put(cbuf_handle_t cbuf, uint8_t data)
+{
+	cbuf->buffer[cbuf->head] = data;
+}
