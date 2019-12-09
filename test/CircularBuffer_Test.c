@@ -74,3 +74,19 @@ TEST(CircularBuffer, CbufFullFunctionReturnsTrueWhenFull)
 
 	TEST_ASSERT_TRUE(circular_buf_full(test_cbuf));
 }
+
+TEST(CircularBuffer, AddingTwoMoreElementsAfterFullOverwritesOldestElements)
+{
+	for(size_t i = 0; i < size; i++)
+	{
+		circular_buf_put(test_cbuf, data[i]);
+	}
+	circular_buf_put(test_cbuf, 6);
+	circular_buf_put(test_cbuf, 7);
+
+	TEST_ASSERT_EQUAL_UINT8(6, buffer[0]);
+	TEST_ASSERT_EQUAL_UINT8(7, buffer[1]);
+	//rest of buffer should not be overwritten yet
+	TEST_ASSERT_EQUAL_UINT8(3, buffer[2]);
+}
+

@@ -14,7 +14,14 @@ enum {TRUE = 1, FALSE = 0};
 /** Helper Functions **/
 static void advance_pointer(cbuf_handle_t cbuf)
 {
-	cbuf->head += 1;
+	if (cbuf->full)
+	{
+		cbuf->head = (cbuf->head + 1) % cbuf->max;
+	}
+	else
+	{
+		cbuf->head += 1;
+	}
 }
 /** end **/
 
