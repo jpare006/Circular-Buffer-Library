@@ -72,3 +72,8 @@ void circular_buf_reset(cbuf_handle_t cbuf)
 	cbuf->tail = 0;
 	cbuf->full = FALSE;
 }
+
+uint8_t circular_buf_get(cbuf_handle_t cbuf)
+{
+	return cbuf->buffer[cbuf->tail];
+}

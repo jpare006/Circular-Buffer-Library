@@ -20,5 +20,6 @@ BOOL circular_buf_full(cbuf_handle_t cbuf);
 void circular_buf_put(cbuf_handle_t cbuf, uint8_t data);
 size_t circular_buf_capacity(cbuf_handle_t cbuf);
 void circular_buf_reset(cbuf_handle_t cbuf);
+uint8_t circular_buf_get(cbuf_handle_t cbuf);
 
 #endif /*_CIRUCULAR_BUFFER_H_*/

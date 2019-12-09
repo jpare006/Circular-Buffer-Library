@@ -119,3 +119,13 @@ TEST(CircularBuffer, ResetFuncSetsCbufHeadAndTailBackToZeroAndFullToFalse)
 	TEST_ASSERT_FALSE(circular_buf_full(test_cbuf));
 }
 
+TEST(CircularBuffer, GetElementFromCircularBuffer)
+{
+	uint8_t data_read;
+
+	circular_buf_put(test_cbuf, data[0]);
+	data_read = circular_buf_get(test_cbuf);
+
+	TEST_ASSERT_EQUAL_UINT8(data[0], data_read);
+}
+
