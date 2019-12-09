@@ -32,7 +32,7 @@ cbuf_handle_t circular_buf_init(uint8_t * buffer, size_t size)
 
 BOOL circular_buf_empty(cbuf_handle_t cbuf)
 {
-	if(cbuf->head == cbuf->tail)
+	if(cbuf->head == cbuf->tail && !cbuf->full)
 	{
 		return TRUE;
 	}
@@ -49,6 +49,10 @@ void circular_buf_put(cbuf_handle_t cbuf, uint8_t data)
 {
 	cbuf->buffer[cbuf->head] = data;
 
+	if (cbuf->head + 1 == cbuf->max)
+	{
+		cbuf->full = TRUE;
+	}
 	advance_pointer(cbuf);
 }
 

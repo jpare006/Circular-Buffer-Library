@@ -63,5 +63,14 @@ TEST(CircularBuffer, AddMultipleDataElementsToCircularBuffer)
 	TEST_ASSERT_EQUAL_UINT8(data[0], buffer[0]);
 	TEST_ASSERT_EQUAL_UINT8(data[1], buffer[1]);
 	TEST_ASSERT_EQUAL_UINT8(data[2], buffer[2]);
+}
 
+TEST(CircularBuffer, CbufFullFunctionReturnsTrueWhenFull)
+{
+	for(size_t i = 0; i < size; i++)
+	{
+		circular_buf_put(test_cbuf, data[i]);
+	}
+
+	TEST_ASSERT_TRUE(circular_buf_full(test_cbuf));
 }

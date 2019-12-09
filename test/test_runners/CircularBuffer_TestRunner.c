@@ -9,4 +9,5 @@ TEST_GROUP_RUNNER(CircularBuffer)
 	RUN_TEST_CASE(CircularBuffer, AddFirstDataElementToCircularBuffer);
 	RUN_TEST_CASE(CircularBuffer, CapacityMethodReturnsCorrectValue);
 	RUN_TEST_CASE(CircularBuffer, AddMultipleDataElementsToCircularBuffer);
+	RUN_TEST_CASE(CircularBuffer, CbufFullFunctionReturnsTrueWhenFull);
 }
