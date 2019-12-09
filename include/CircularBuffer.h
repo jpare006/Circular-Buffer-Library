@@ -14,10 +14,10 @@ typedef struct circular_buf_t circular_buf_t;
 typedef circular_buf_t* cbuf_handle_t;
 
 
-cbuf_handle_t CircularBuffer_Init(uint8_t * buffer, size_t size);
-BOOL CircularBuffer_Empty(cbuf_handle_t cbuf);
-BOOL CircularBuffer_Full(cbuf_handle_t cbuf);
-void CircularBuffer_Put(cbuf_handle_t cbuf, uint8_t data);
-size_t CircularBuffer_Capacity(cbuf_handle_t cbuf);
+cbuf_handle_t circular_buf_init(uint8_t * buffer, size_t size);
+BOOL circular_buf_empty(cbuf_handle_t cbuf);
+BOOL circular_buf_full(cbuf_handle_t cbuf);
+void circular_buf_put(cbuf_handle_t cbuf, uint8_t data);
+size_t circular_buf_capacity(cbuf_handle_t cbuf);
 
 #endif /*_CIRUCULAR_BUFFER_H_*/

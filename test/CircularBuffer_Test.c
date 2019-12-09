@@ -11,7 +11,7 @@ static uint8_t data[] = {1, 2, 3, 4, 5};
 TEST_SETUP(CircularBuffer)
 {
 	buffer = malloc(sizeof(uint8_t) * size);
-	test_cbuf = CircularBuffer_Init(buffer, size);
+	test_cbuf = circular_buf_init(buffer, size);
 
 }
 
@@ -24,17 +24,17 @@ TEST_TEAR_DOWN(CircularBuffer)
 
 TEST(CircularBuffer, InitCbuf)
 {	
-	test_cbuf = CircularBuffer_Init(buffer, size);
+	test_cbuf = circular_buf_init(buffer, size);
 
 	TEST_ASSERT_NOT_NULL(test_cbuf);
 }
 
 TEST(CircularBuffer, CircularBufferEmptyOnInit)
 {
-	test_cbuf = CircularBuffer_Init(buffer, size);
+	test_cbuf = circular_buf_init(buffer, size);
 
-	TEST_ASSERT_TRUE(CircularBuffer_Empty(test_cbuf));
-	TEST_ASSERT_FALSE(CircularBuffer_Full(test_cbuf));
+	TEST_ASSERT_TRUE(circular_buf_empty(test_cbuf));
+	TEST_ASSERT_FALSE(circular_buf_full(test_cbuf));
 }
 
 IGNORE_TEST(CircularBuffer, UserBufferSizeLessThanOneProducesError)
@@ -44,21 +44,21 @@ IGNORE_TEST(CircularBuffer, UserBufferSizeLessThanOneProducesError)
 
 TEST(CircularBuffer, AddFirstDataElementToCircularBuffer)
 {
-	CircularBuffer_Put(test_cbuf, data[0]);
+	circular_buf_put(test_cbuf, data[0]);
 
 	TEST_ASSERT_EQUAL_UINT8(data[0], buffer[0]);
 }
 
 TEST(CircularBuffer, CapacityMethodReturnsCorrectValue)
 {
-	TEST_ASSERT_EQUAL_size_t(size, CircularBuffer_Capacity(test_cbuf));
+	TEST_ASSERT_EQUAL_size_t(size, circular_buf_capacity(test_cbuf));
 }
 
 TEST(CircularBuffer, AddMultipleDataElementsToCircularBuffer)
 {
-	CircularBuffer_Put(test_cbuf, data[0]);
-	CircularBuffer_Put(test_cbuf, data[1]);
-	CircularBuffer_Put(test_cbuf, data[2]);
+	circular_buf_put(test_cbuf, data[0]);
+	circular_buf_put(test_cbuf, data[1]);
+	circular_buf_put(test_cbuf, data[2]);
 
 	TEST_ASSERT_EQUAL_UINT8(data[0], buffer[0]);
 	TEST_ASSERT_EQUAL_UINT8(data[1], buffer[1]);
