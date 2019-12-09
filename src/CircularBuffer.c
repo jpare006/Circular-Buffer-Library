@@ -30,9 +30,7 @@ cbuf_handle_t circular_buf_init(uint8_t * buffer, size_t size)
 	cbuf_handle_t cbuf = malloc(sizeof(circular_buf_t));
 	cbuf->buffer = buffer;
 	cbuf->max = size;
-	cbuf->head = 0;
-	cbuf->tail = 0;
-	cbuf->full = FALSE;
+	circular_buf_reset(cbuf);
 
 	return cbuf;
 }
@@ -66,4 +64,11 @@ void circular_buf_put(cbuf_handle_t cbuf, uint8_t data)
 size_t circular_buf_capacity(cbuf_handle_t cbuf)
 {
 	return cbuf->max;
+}
+
+void circular_buf_reset(cbuf_handle_t cbuf)
+{
+	cbuf->head = 0;
+	cbuf->tail = 0;
+	cbuf->full = FALSE;
 }

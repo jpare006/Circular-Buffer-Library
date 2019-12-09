@@ -90,3 +90,17 @@ TEST(CircularBuffer, AddingTwoMoreElementsAfterFullOverwritesOldestElements)
 	TEST_ASSERT_EQUAL_UINT8(3, buffer[2]);
 }
 
+TEST(CircularBuffer, ResetFuncSetsCbufHeadAndTailBackToZeroAndFullToFalse)
+{
+	//Fill circular buffer to max capacity
+	for(size_t i = 0; i < size; i++)
+	{
+		circular_buf_put(test_cbuf, data[i]);
+	}
+	circular_buf_reset(test_cbuf);
+
+	//call empty to check if reset worked
+	TEST_ASSERT_TRUE(circular_buf_empty(test_cbuf));
+	TEST_ASSERT_FALSE(circular_buf_full(test_cbuf));
+}
+
