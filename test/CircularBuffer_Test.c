@@ -187,11 +187,14 @@ TEST(CircularBuffer, ReadMaxSizeElementsAfterOverwrite)
     TEST_ASSERT_EQUAL_UINT8_ARRAY(expected_read, actual_read, size);
 }
 
-IGNORE_TEST(CircularBuffer, FullFlagSetToZeroAfterReadOcurs)
+TEST(CircularBuffer, FullFlagSetToZeroAfterReadOcurs)
 {
-    //Fill buffer, check flag to ensure full flag has been set
-    //, make a read, and check flag once again to ensure it is
-    //no longer set
+    fill_buffer(test_cbuf);
+    TEST_ASSERT_TRUE(circular_buf_full(test_cbuf));
+
+    circular_buf_get(test_cbuf);
+    TEST_ASSERT_FALSE(circular_buf_full(test_cbuf));
+
 }
 
 IGNORE_TEST(CircularBuffer, ReadMaxSizeElementsAfterMultipleOverwrite)
