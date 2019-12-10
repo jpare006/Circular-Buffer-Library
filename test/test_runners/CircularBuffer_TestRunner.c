@@ -18,5 +18,5 @@ TEST_GROUP_RUNNER(CircularBuffer)
     RUN_TEST_CASE(CircularBuffer, HeadPointerIsUpdatedAfterSingleOverwriteOccurs);
     RUN_TEST_CASE(CircularBuffer, ReadMaxSizeElementsAfterOverwrite);
     RUN_TEST_CASE(CircularBuffer, FullFlagSetToZeroAfterReadOcurs);
-    RUN_TEST_CASE(CircularBuffer, ReadMaxSizeElementsAfterMultipleOverwrite);
+    RUN_TEST_CASE(CircularBuffer, ReadMaxSizeElementsAfterMultipleOverwrites);
 }

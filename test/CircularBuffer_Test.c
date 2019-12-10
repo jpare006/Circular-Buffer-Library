@@ -197,8 +197,19 @@ TEST(CircularBuffer, FullFlagSetToZeroAfterReadOcurs)
 
 }
 
-IGNORE_TEST(CircularBuffer, ReadMaxSizeElementsAfterMultipleOverwrite)
+TEST(CircularBuffer, ReadMaxSizeElementsAfterMultipleOverwrites)
 {
+    uint8_t expected_read[] = {5, 6, 7, 8, 9};
+    uint8_t actual_read[5] = {0};
+    
+    fill_buffer_num_elements(test_cbuf, size * 2);
 
+    //read max size elements after overwrites
+    for(size_t i = 0; i < size; i++)
+    {
+        actual_read[i] = circular_buf_get(test_cbuf);
+    }
+
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(expected_read, actual_read, size);
 }
 
