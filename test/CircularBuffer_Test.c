@@ -1,5 +1,6 @@
 #include "unity_fixture.h"
 #include "CircularBuffer.h"
+#include <stdio.h>
 
 TEST_GROUP(CircularBuffer);
 
@@ -163,10 +164,36 @@ TEST(CircularBuffer, HeadPointerIsUpdatedAfterSingleOverwriteOccurs)
     TEST_ASSERT_EQUAL_UINT8(data[1], data_read);
 }
 
+TEST(CircularBuffer, ReadMaxSizeElementsAfterOverwrite)
+{
+    uint8_t expected_read[] = {2, 3, 4, 5, 6};
+    uint8_t actual_read[5] = {0};
+    //fill buffer with max size elements
+    for(size_t i = 0; i < size; i++)
+    {
+        circular_buf_put(test_cbuf, data[i]);
+    }
+    //overwrite oldest element (data overwritten = 1)
+    circular_buf_put(test_cbuf, 6);
+
+    //read max size elements after overwrite
+    for(size_t i = 0; i < size; i++)
+    {
+        actual_read[i] = circular_buf_get(test_cbuf);
+    }
+
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(expected_read, actual_read, size);
+}
+
 IGNORE_TEST(CircularBuffer, FullFlagSetToZeroAfterReadOcurs)
 {
     //Fill buffer, check flag to ensure full flag has been set
     //, make a read, and check flag once again to ensure it is
     //no longer set
+}
+
+IGNORE_TEST(CircularBuffer, ReadMaxSizeElementsAfterMultipleOverwrite)
+{
+
 }
 
