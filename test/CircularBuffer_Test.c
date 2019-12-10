@@ -9,6 +9,24 @@ static uint8_t * buffer;
 cbuf_handle_t test_cbuf;
 static uint8_t data[] = {1, 2, 3, 4, 5};
 
+/** Helper functions **/
+static void fill_buffer(cbuf_handle_t test_cbuf)
+{
+    for(size_t i = 0; i < size; i++)
+    {
+        circular_buf_put(test_cbuf, data[i]);
+    }
+}
+
+static void fill_buffer_num_elements(cbuf_handle_t test_cbuf, size_t num)
+{
+    for(uint8_t i = 0; i < num; i++)
+    {
+        circular_buf_put(test_cbuf, i);
+    }
+}
+/** end helper **/
+
 TEST_SETUP(CircularBuffer)
 {
     buffer = malloc(sizeof(uint8_t) * size);
@@ -68,20 +86,15 @@ TEST(CircularBuffer, AddMultipleDataElementsToCircularBuffer)
 
 TEST(CircularBuffer, CbufFullFunctionReturnsTrueWhenFull)
 {
-    for(size_t i = 0; i < size; i++)
-    {
-        circular_buf_put(test_cbuf, data[i]);
-    }
+    fill_buffer(test_cbuf);
 
     TEST_ASSERT_TRUE(circular_buf_full(test_cbuf));
 }
 
 TEST(CircularBuffer, AddingTwoMoreElementsAfterFullOverwritesOldestElements)
 {
-    for(size_t i = 0; i < size; i++)
-    {
-        circular_buf_put(test_cbuf, data[i]);
-    }
+    fill_buffer(test_cbuf);
+
     circular_buf_put(test_cbuf, 6);
     circular_buf_put(test_cbuf, 7);
 
@@ -93,26 +106,22 @@ TEST(CircularBuffer, AddingTwoMoreElementsAfterFullOverwritesOldestElements)
 
 TEST(CircularBuffer, AddingMultipleElementsAfterFullContinuesToOverwriteOldestElements)
 {
-    uint8_t i;
-    for(i = 0; i < size * 2; i++)
-    {
-        circular_buf_put(test_cbuf, i);
-    }
-    circular_buf_put(test_cbuf, i);
+    //2 rounds around the buffer
+    fill_buffer_num_elements(test_cbuf, size * 2);
 
-    TEST_ASSERT_EQUAL_UINT8(i - 2, buffer[3]);
-    TEST_ASSERT_EQUAL_UINT8(i - 1, buffer[4]);
-    TEST_ASSERT_EQUAL_UINT8(i, buffer[0]);
+    //plus an extra overwrite
+    circular_buf_put(test_cbuf, size * 2);
+
+    TEST_ASSERT_EQUAL_UINT8(8, buffer[3]);
+    TEST_ASSERT_EQUAL_UINT8(9, buffer[4]);
+    TEST_ASSERT_EQUAL_UINT8(10, buffer[0]);
 
 }
 
 TEST(CircularBuffer, ResetFuncSetsCbufHeadAndTailBackToZeroAndFullToFalse)
 {
-    //Fill circular buffer to max capacity
-    for(size_t i = 0; i < size; i++)
-    {
-        circular_buf_put(test_cbuf, data[i]);
-    }
+    fill_buffer(test_cbuf);
+
     circular_buf_reset(test_cbuf);
 
     //call empty to check if reset worked
@@ -148,11 +157,7 @@ TEST(CircularBuffer, HeadPointerIsUpdatedAfterSingleOverwriteOccurs)
 {
     uint8_t data_read;
 
-    //fill buffer with max size elements
-    for(size_t i = 0; i < size; i++)
-    {
-        circular_buf_put(test_cbuf, data[i]);
-    }
+    fill_buffer(test_cbuf);
     //overwrite oldest data element
     circular_buf_put(test_cbuf, 150);
 
@@ -168,11 +173,8 @@ TEST(CircularBuffer, ReadMaxSizeElementsAfterOverwrite)
 {
     uint8_t expected_read[] = {2, 3, 4, 5, 6};
     uint8_t actual_read[5] = {0};
-    //fill buffer with max size elements
-    for(size_t i = 0; i < size; i++)
-    {
-        circular_buf_put(test_cbuf, data[i]);
-    }
+    
+    fill_buffer(test_cbuf);
     //overwrite oldest element (data overwritten = 1)
     circular_buf_put(test_cbuf, 6);
 
