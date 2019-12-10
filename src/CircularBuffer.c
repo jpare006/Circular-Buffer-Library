@@ -11,8 +11,10 @@ struct circular_buf_t
 
 enum {TRUE = 1, FALSE = 0};
 
+static uint8_t data_read;
+
 /** Helper Functions **/
-static void advance_pointer(cbuf_handle_t cbuf)
+static void advance_write_pointer(cbuf_handle_t cbuf)
 {
 	if (cbuf->full)
 	{
@@ -22,6 +24,11 @@ static void advance_pointer(cbuf_handle_t cbuf)
 	{
 		cbuf->head += 1;
 	}
+}
+
+static void advance_read_pointer(cbuf_handle_t cbuf)
+{
+	cbuf->tail += 1;
 }
 /** end **/
 
@@ -58,7 +65,7 @@ void circular_buf_put(cbuf_handle_t cbuf, uint8_t data)
 	{
 		cbuf->full = TRUE;
 	}
-	advance_pointer(cbuf);
+	advance_write_pointer(cbuf);
 }
 
 size_t circular_buf_capacity(cbuf_handle_t cbuf)
@@ -75,5 +82,8 @@ void circular_buf_reset(cbuf_handle_t cbuf)
 
 uint8_t circular_buf_get(cbuf_handle_t cbuf)
 {
-	return cbuf->buffer[cbuf->tail];
+	data_read = cbuf->buffer[cbuf->tail];
+	advance_read_pointer(cbuf);
+
+	return data_read;
 }

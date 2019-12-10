@@ -129,3 +129,16 @@ TEST(CircularBuffer, GetElementFromCircularBuffer)
 	TEST_ASSERT_EQUAL_UINT8(data[0], data_read);
 }
 
+TEST(CircularBuffer, GetTwoElementsFromCircularBuffer)
+{
+	uint8_t data_read[] = {0, 0};
+
+	circular_buf_put(test_cbuf, data[0]);
+	circular_buf_put(test_cbuf, data[1]);
+	data_read[0] = circular_buf_get(test_cbuf);
+	data_read[1] = circular_buf_get(test_cbuf);
+
+	TEST_ASSERT_EQUAL_UINT8(data[0], data_read[0]);
+	TEST_ASSERT_EQUAL_UINT8(data[1], data_read[1]);
+}
+

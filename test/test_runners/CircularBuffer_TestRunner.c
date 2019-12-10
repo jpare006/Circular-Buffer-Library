@@ -14,4 +14,5 @@ TEST_GROUP_RUNNER(CircularBuffer)
 	RUN_TEST_CASE(CircularBuffer, ResetFuncSetsCbufHeadAndTailBackToZeroAndFullToFalse);
 	RUN_TEST_CASE(CircularBuffer, AddingMultipleElementsAfterFullContinuesToOverwriteOldestElements);
 	RUN_TEST_CASE(CircularBuffer, GetElementFromCircularBuffer);
+	RUN_TEST_CASE(CircularBuffer, GetTwoElementsFromCircularBuffer);
 }
