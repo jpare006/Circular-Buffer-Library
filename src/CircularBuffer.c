@@ -1,5 +1,8 @@
 #include "CircularBuffer.h"
 
+//reads happen at the head of the buffer
+//writes happen at the tail of the buffer
+
 struct circular_buf_t
 {
 	uint8_t * buffer;
@@ -18,17 +21,17 @@ static void advance_write_pointer(cbuf_handle_t cbuf)
 {
 	if (cbuf->full)
 	{
-		cbuf->head = (cbuf->head + 1) % cbuf->max;
+		cbuf->tail = (cbuf->tail + 1) % cbuf->max;
 	}
 	else
 	{
-		cbuf->head += 1;
+		cbuf->tail += 1;
 	}
 }
 
 static void advance_read_pointer(cbuf_handle_t cbuf)
 {
-	cbuf->tail += 1;
+	cbuf->head += 1;
 }
 /** end **/
 
@@ -59,9 +62,9 @@ BOOL circular_buf_full(cbuf_handle_t cbuf)
 
 void circular_buf_put(cbuf_handle_t cbuf, uint8_t data)
 {
-	cbuf->buffer[cbuf->head] = data;
+	cbuf->buffer[cbuf->tail] = data;
 
-	if (cbuf->head + 1 == cbuf->max)
+	if (cbuf->tail + 1 == cbuf->max)
 	{
 		cbuf->full = TRUE;
 	}
@@ -82,7 +85,7 @@ void circular_buf_reset(cbuf_handle_t cbuf)
 
 uint8_t circular_buf_get(cbuf_handle_t cbuf)
 {
-	data_read = cbuf->buffer[cbuf->tail];
+	data_read = cbuf->buffer[cbuf->head];
 	advance_read_pointer(cbuf);
 
 	return data_read;
