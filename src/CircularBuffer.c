@@ -22,6 +22,7 @@ static void advance_write_pointer(cbuf_handle_t cbuf)
 	if (cbuf->full)
 	{
 		cbuf->tail = (cbuf->tail + 1) % cbuf->max;
+		cbuf->head = cbuf->head + 1;
 	}
 	else
 	{

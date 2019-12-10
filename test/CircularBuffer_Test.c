@@ -142,3 +142,31 @@ TEST(CircularBuffer, GetTwoElementsFromCircularBuffer)
 	TEST_ASSERT_EQUAL_UINT8(data[1], data_read[1]);
 }
 
+//TODO: issue with incrementing pointers when buffer is full
+TEST(CircularBuffer, HeadPointerIsUpdatedAfterOverwriteOccurs)
+{
+	uint8_t data_read;
+
+	//fill buffer with max size elements
+	for(size_t i = 0; i < size; i++)
+	{
+		circular_buf_put(test_cbuf, data[i]);
+	}
+	//overwrite oldest data element
+	circular_buf_put(test_cbuf, 150);
+
+	//read data from heads new location
+	data_read = circular_buf_get(test_cbuf);
+
+	//data at heads original loc. is overwritten by 150
+	//head must advanced to maintain FIFO functionality
+	TEST_ASSERT_EQUAL_UINT8(data[1], data_read);
+}
+
+IGNORE_TEST(CircularBuffer, FullFlagSetToZeroAfterReadOcurs)
+{
+	//Fill buffer, check flag to ensure full flag has been set
+	//, make a read, and check flag once again to ensure it is
+	//no longer set
+}
+
