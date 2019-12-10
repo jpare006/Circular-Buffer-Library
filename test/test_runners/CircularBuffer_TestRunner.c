@@ -15,6 +15,6 @@ TEST_GROUP_RUNNER(CircularBuffer)
 	RUN_TEST_CASE(CircularBuffer, AddingMultipleElementsAfterFullContinuesToOverwriteOldestElements);
 	RUN_TEST_CASE(CircularBuffer, GetElementFromCircularBuffer);
 	RUN_TEST_CASE(CircularBuffer, GetTwoElementsFromCircularBuffer);
-	RUN_TEST_CASE(CircularBuffer, HeadPointerIsUpdatedAfterOverwriteOccurs);
+	RUN_TEST_CASE(CircularBuffer, HeadPointerIsUpdatedAfterSingleOverwriteOccurs);
 	RUN_TEST_CASE(CircularBuffer, FullFlagSetToZeroAfterReadOcurs);
 }

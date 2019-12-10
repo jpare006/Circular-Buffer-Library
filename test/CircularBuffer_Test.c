@@ -143,7 +143,7 @@ TEST(CircularBuffer, GetTwoElementsFromCircularBuffer)
 }
 
 //TODO: issue with incrementing pointers when buffer is full
-TEST(CircularBuffer, HeadPointerIsUpdatedAfterOverwriteOccurs)
+TEST(CircularBuffer, HeadPointerIsUpdatedAfterSingleOverwriteOccurs)
 {
 	uint8_t data_read;
 

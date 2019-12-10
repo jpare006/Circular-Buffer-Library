@@ -21,18 +21,16 @@ static void advance_write_pointer(cbuf_handle_t cbuf)
 {
 	if (cbuf->full)
 	{
-		cbuf->tail = (cbuf->tail + 1) % cbuf->max;
 		cbuf->head = cbuf->head + 1;
 	}
-	else
-	{
-		cbuf->tail += 1;
-	}
+
+	cbuf->tail = (cbuf->tail + 1) % cbuf->max;
+	cbuf->full = (cbuf->head == cbuf->tail);
 }
 
 static void advance_read_pointer(cbuf_handle_t cbuf)
 {
-	cbuf->head += 1;
+	cbuf->head = cbuf->head + 1;
 }
 /** end **/
 
@@ -65,10 +63,6 @@ void circular_buf_put(cbuf_handle_t cbuf, uint8_t data)
 {
 	cbuf->buffer[cbuf->tail] = data;
 
-	if (cbuf->tail + 1 == cbuf->max)
-	{
-		cbuf->full = TRUE;
-	}
 	advance_write_pointer(cbuf);
 }
 
