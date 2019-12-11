@@ -5,7 +5,6 @@ TEST_GROUP_RUNNER(CircularBuffer)
 {
     RUN_TEST_CASE(CircularBuffer, InitCbuf);
     RUN_TEST_CASE(CircularBuffer, CircularBufferEmptyOnInit);
-    RUN_TEST_CASE(CircularBuffer, UserBufferSizeLessThanOneProducesError);
     RUN_TEST_CASE(CircularBuffer, AddFirstDataElementToCircularBuffer);
     RUN_TEST_CASE(CircularBuffer, CapacityMethodReturnsCorrectValue);
     RUN_TEST_CASE(CircularBuffer, AddMultipleDataElementsToCircularBuffer);
@@ -24,4 +23,5 @@ TEST_GROUP_RUNNER(CircularBuffer)
     RUN_TEST_CASE(CircularBuffer, SizeFuncReturnMaxSizeWhenCbufFull);
     RUN_TEST_CASE(CircularBuffer, CallToSizeFuncWhenTailGreaterThanHead);
     RUN_TEST_CASE(CircularBuffer, CallToSizeFuncWhenTailLessThanHead);
+    RUN_TEST_CASE(CircularBuffer, CallToCbufFreeReturnsZero);
 }

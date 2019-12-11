@@ -22,5 +22,6 @@ size_t circular_buf_capacity(cbuf_handle_t cbuf);
 void circular_buf_reset(cbuf_handle_t cbuf);
 int circular_buf_get(cbuf_handle_t cbuf, uint8_t * data_read);
 size_t circular_buf_size(cbuf_handle_t cbuf);
+int circular_buf_free(cbuf_handle_t cbuf);
 
 #endif /*_CIRUCULAR_BUFFER_H_*/

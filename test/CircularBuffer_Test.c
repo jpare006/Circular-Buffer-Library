@@ -58,11 +58,6 @@ TEST(CircularBuffer, CircularBufferEmptyOnInit)
     TEST_ASSERT_FALSE(circular_buf_full(test_cbuf));
 }
 
-IGNORE_TEST(CircularBuffer, UserBufferSizeLessThanOneProducesError)
-{
-    //TODO: write code to produce error on size that is too small
-}
-
 TEST(CircularBuffer, AddFirstDataElementToCircularBuffer)
 {
     circular_buf_put(test_cbuf, data[0]);
@@ -269,5 +264,13 @@ TEST(CircularBuffer, CallToSizeFuncWhenTailLessThanHead)
     elements_in_cbuf = circular_buf_size(test_cbuf);
 
     TEST_ASSERT_EQUAL_size_t(3, elements_in_cbuf);
+}
+
+TEST(CircularBuffer, CallToCbufFreeReturnsZero)
+{
+	int status;
+	status = circular_buf_free(test_cbuf);
+
+	TEST_ASSERT_EQUAL_INT(0, status);
 }
 //************* end tests *************//

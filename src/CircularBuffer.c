@@ -114,3 +114,10 @@ size_t circular_buf_size(cbuf_handle_t cbuf)
         return 0;
     }
 }
+
+int circular_buf_free(cbuf_handle_t cbuf)
+{
+	free(cbuf);
+
+	return 0;
+}
