@@ -8,8 +8,9 @@ static size_t size = 5;
 static uint8_t * buffer;
 cbuf_handle_t test_cbuf;
 static uint8_t data[] = {1, 2, 3, 4, 5};
+static size_t elements_in_cbuf;
 
-/** Helper functions **/
+//************* Helper functions *************//
 static void fill_buffer(cbuf_handle_t test_cbuf)
 {
     for(size_t i = 0; i < size; i++)
@@ -25,10 +26,11 @@ static void fill_buffer_num_elements(cbuf_handle_t test_cbuf, size_t num)
         circular_buf_put(test_cbuf, i);
     }
 }
-/** end helper **/
+//************* end helper *************//
 
 TEST_SETUP(CircularBuffer)
 {
+    elements_in_cbuf = size + 1;
     buffer = malloc(sizeof(uint8_t) * size);
     test_cbuf = circular_buf_init(buffer, size);
 
@@ -39,7 +41,7 @@ TEST_TEAR_DOWN(CircularBuffer)
     free(buffer);
 }
 
-
+//************* begin tests *************//
 
 TEST(CircularBuffer, InitCbuf)
 {   
@@ -227,3 +229,45 @@ TEST(CircularBuffer, ReadWhenBufferEmptyReturnsErrorToUser)
     TEST_ASSERT_EQUAL_INT(-1, status);
 }
 
+TEST(CircularBuffer, SizeFuncReturnsZeroWhenCbufEmpty)
+{
+    elements_in_cbuf = circular_buf_size(test_cbuf);
+
+    TEST_ASSERT_EQUAL_size_t(0, elements_in_cbuf);
+}
+
+TEST(CircularBuffer, SizeFuncReturnMaxSizeWhenCbufFull)
+{
+    fill_buffer(test_cbuf);
+    elements_in_cbuf = circular_buf_size(test_cbuf);
+
+    TEST_ASSERT_EQUAL_size_t(size, elements_in_cbuf);
+}
+
+TEST(CircularBuffer, CallToSizeFuncWhenTailGreaterThanHead)
+{
+
+    //tail will equal 2, and head = 0
+    circular_buf_put(test_cbuf, data[0]);
+    circular_buf_put(test_cbuf, data[1]);
+
+    elements_in_cbuf = circular_buf_size(test_cbuf);
+
+    TEST_ASSERT_EQUAL_size_t(2, elements_in_cbuf);
+}
+
+TEST(CircularBuffer, CallToSizeFuncWhenTailLessThanHead)
+{
+    uint8_t temp;
+    //1 overwrite will occur, tail will = 1 and head = 1: full flag is set
+    fill_buffer_num_elements(test_cbuf, size + 1);
+    //make two reads so tail = 1 and head = 3: full flag no longer set
+    circular_buf_get(test_cbuf, &temp);
+    circular_buf_get(test_cbuf, &temp);
+
+
+    elements_in_cbuf = circular_buf_size(test_cbuf);
+
+    TEST_ASSERT_EQUAL_size_t(3, elements_in_cbuf);
+}
+//************* end tests *************//

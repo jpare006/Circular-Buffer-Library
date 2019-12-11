@@ -20,4 +20,8 @@ TEST_GROUP_RUNNER(CircularBuffer)
     RUN_TEST_CASE(CircularBuffer, FullFlagSetToZeroAfterReadOcurs);
     RUN_TEST_CASE(CircularBuffer, ReadMaxSizeElementsAfterMultipleOverwrites);
     RUN_TEST_CASE(CircularBuffer, ReadWhenBufferEmptyReturnsErrorToUser);
+    RUN_TEST_CASE(CircularBuffer, SizeFuncReturnsZeroWhenCbufEmpty);
+    RUN_TEST_CASE(CircularBuffer, SizeFuncReturnMaxSizeWhenCbufFull);
+    RUN_TEST_CASE(CircularBuffer, CallToSizeFuncWhenTailGreaterThanHead);
+    RUN_TEST_CASE(CircularBuffer, CallToSizeFuncWhenTailLessThanHead);
 }

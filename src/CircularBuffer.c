@@ -93,3 +93,24 @@ int circular_buf_get(cbuf_handle_t cbuf, uint8_t * data_read)
 
     return status;
 }
+
+size_t circular_buf_size(cbuf_handle_t cbuf)
+{
+    if(circular_buf_full(cbuf))
+    {
+        return cbuf->max;
+    }
+    else if(cbuf->tail > cbuf->head)
+    {
+        return cbuf->tail - cbuf->head;
+    }
+    else if (cbuf->tail < cbuf->head)
+    {
+        return (cbuf->max - cbuf->head) + cbuf->tail;
+    }
+    else
+    {
+        //only option left: tail == head && !full
+        return 0;
+    }
+}
