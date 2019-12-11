@@ -134,7 +134,7 @@ TEST(CircularBuffer, GetElementFromCircularBuffer)
     uint8_t data_read;
 
     circular_buf_put(test_cbuf, data[0]);
-    data_read = circular_buf_get(test_cbuf);
+    circular_buf_get(test_cbuf, &data_read);
 
     TEST_ASSERT_EQUAL_UINT8(data[0], data_read);
 }
@@ -145,8 +145,9 @@ TEST(CircularBuffer, GetTwoElementsFromCircularBuffer)
 
     circular_buf_put(test_cbuf, data[0]);
     circular_buf_put(test_cbuf, data[1]);
-    data_read[0] = circular_buf_get(test_cbuf);
-    data_read[1] = circular_buf_get(test_cbuf);
+
+    circular_buf_get(test_cbuf, &data_read[0]);
+    circular_buf_get(test_cbuf, &data_read[1]);
 
     TEST_ASSERT_EQUAL_UINT8(data[0], data_read[0]);
     TEST_ASSERT_EQUAL_UINT8(data[1], data_read[1]);
@@ -162,7 +163,7 @@ TEST(CircularBuffer, HeadPointerIsUpdatedAfterSingleOverwriteOccurs)
     circular_buf_put(test_cbuf, 150);
 
     //read data from heads new location
-    data_read = circular_buf_get(test_cbuf);
+    circular_buf_get(test_cbuf, &data_read);
 
     //data at heads original loc. is overwritten by 150
     //head must advanced to maintain FIFO functionality
@@ -181,7 +182,7 @@ TEST(CircularBuffer, ReadMaxSizeElementsAfterOverwrite)
     //read max size elements after overwrite
     for(size_t i = 0; i < size; i++)
     {
-        actual_read[i] = circular_buf_get(test_cbuf);
+        circular_buf_get(test_cbuf, &actual_read[i]);
     }
 
     TEST_ASSERT_EQUAL_UINT8_ARRAY(expected_read, actual_read, size);
@@ -189,10 +190,12 @@ TEST(CircularBuffer, ReadMaxSizeElementsAfterOverwrite)
 
 TEST(CircularBuffer, FullFlagSetToZeroAfterReadOcurs)
 {
+    uint8_t temp;
+
     fill_buffer(test_cbuf);
     TEST_ASSERT_TRUE(circular_buf_full(test_cbuf));
 
-    circular_buf_get(test_cbuf);
+    circular_buf_get(test_cbuf, &temp);
     TEST_ASSERT_FALSE(circular_buf_full(test_cbuf));
 
 }
@@ -207,9 +210,20 @@ TEST(CircularBuffer, ReadMaxSizeElementsAfterMultipleOverwrites)
     //read max size elements after overwrites
     for(size_t i = 0; i < size; i++)
     {
-        actual_read[i] = circular_buf_get(test_cbuf);
+        circular_buf_get(test_cbuf, &actual_read[i]);
     }
 
     TEST_ASSERT_EQUAL_UINT8_ARRAY(expected_read, actual_read, size);
+}
+
+TEST(CircularBuffer, ReadWhenBufferEmptyReturnsErrorToUser)
+{
+    uint8_t temp;
+
+    int status;
+    circular_buf_reset(test_cbuf);
+    status = circular_buf_get(test_cbuf, &temp);
+
+    TEST_ASSERT_EQUAL_INT(-1, status);
 }
 
