@@ -24,4 +24,5 @@ TEST_GROUP_RUNNER(CircularBuffer)
     RUN_TEST_CASE(CircularBuffer, CallToSizeFuncWhenTailGreaterThanHead);
     RUN_TEST_CASE(CircularBuffer, CallToSizeFuncWhenTailLessThanHead);
     RUN_TEST_CASE(CircularBuffer, CallToCbufFreeReturnsZero);
+    RUN_TEST_CASE(CircularBuffer, FillBufferThenReadingAllDoesNotGiveFalseFullFlag);
 }

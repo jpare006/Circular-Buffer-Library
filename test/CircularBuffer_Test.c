@@ -273,4 +273,19 @@ TEST(CircularBuffer, CallToCbufFreeReturnsZero)
 
 	TEST_ASSERT_EQUAL_INT(0, status);
 }
+
+TEST(CircularBuffer, FillBufferThenReadingAllDoesNotGiveFalseFullFlag)
+{
+    uint8_t read;
+    fill_buffer(test_cbuf);
+
+    //read size amount of elements
+    for(size_t i = 0; i < size; i++)
+    {
+        circular_buf_get(test_cbuf, &read);
+    }
+
+    TEST_ASSERT_FALSE(circular_buf_full(test_cbuf));
+
+}
 //************* end tests *************//

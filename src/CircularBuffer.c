@@ -29,7 +29,7 @@ static void advance_write_pointer(cbuf_handle_t cbuf)
 static void advance_read_pointer(cbuf_handle_t cbuf)
 {
     cbuf->head = (cbuf->head + 1) % cbuf->max;
-    cbuf->full = (cbuf->head == cbuf->tail);
+    cbuf->full = FALSE;
 }
 /** end **/
 
