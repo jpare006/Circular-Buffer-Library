@@ -55,7 +55,7 @@ default:
 	@-./$(TARGET) # -v
 
 clean:
-	$(CLEANUP) $(TARGET1)
+	$(CLEANUP) $(TARGET)
 
 ci: CFLAGS += -Werror
 ci: default

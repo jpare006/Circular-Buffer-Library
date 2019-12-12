@@ -2,10 +2,10 @@
 
 static void RunAllTests(void)
 {
-	RUN_TEST_GROUP(CircularBuffer);
+    RUN_TEST_GROUP(CircularBuffer);
 }
 
 int main(int argc, const char * argv[])
 {
-	UnityMain(argc, argv, RunAllTests);
+    UnityMain(argc, argv, RunAllTests);
 }
