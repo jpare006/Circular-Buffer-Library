@@ -37,14 +37,14 @@ TARGET_BASE=AllTests
 TARGET = $(TARGET_BASE)$(TARGET_EXTENSION)
 
 SRC_FILES=\
-	unity/src/unity.c \
-	unity/extras/fixture/src/unity_fixture.c \
+	Unity/src/unity.c \
+	Unity/extras/fixture/src/unity_fixture.c \
 	src/CircularBuffer.c \
 	test/CircularBuffer_Test.c \
 	test/test_runners/CircularBuffer_TestRunner.c \
 	test/test_runners/AllTests.c
 
-INC_DIRS=-Iunity/src -Iunity/extras/fixture/src -Iinclude
+INC_DIRS=-IUnity/src -IUnity/extras/fixture/src -Iinclude
 
 SYMBOLS=-DUNITY_FIXTURE_NO_EXTRAS
 
