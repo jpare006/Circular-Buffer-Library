@@ -2,7 +2,7 @@
 SILENCE = @
 
 #---- Outputs ----#
-COMPONENT_NAME = MyFirstTest
+COMPONENT_NAME = CircularBuffer
 
 CPPUTEST_HOME = cpputest
 
