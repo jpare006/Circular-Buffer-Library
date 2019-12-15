@@ -2,13 +2,9 @@
 SILENCE = @
 
 #---- Outputs ----#
-COMPONENT_NAME = rename_me
+COMPONENT_NAME = MyFirstTest
 
-#--- Inputs ----#
-PROJECT_HOME_DIR = .
-ifeq "$(CPPUTEST_HOME)" ""
-    CPPUTEST_HOME = ~/tools/cpputest
-endif
+CPPUTEST_HOME = cpputest
 
 # --- SRC_FILES and SRC_DIRS ---
 # Production code files are compiled and put into 
@@ -23,8 +19,8 @@ endif
 # SRC_DIRS specifies directories containing
 # production code C and CPP files.
 #
-SRC_FILES += example-src/Example.c
-SRC_DIRS += example-platform
+SRC_DIRS =\
+	src
 
 # --- TEST_SRC_FILES and TEST_SRC_DIRS ---
 # Test files are always included in the build.
@@ -34,12 +30,9 @@ SRC_DIRS += example-platform
 #
 # TEST_SRC_FILES specifies individual test files to build.  
 # TEST_SRC_DIRS, builds everything in the directory
+TEST_SRC_DIRS = \
+	test
 
-TEST_SRC_FILES +=
-TEST_SRC_DIRS += tests
-TEST_SRC_DIRS += tests/io-cppumock
-#	tests/example-fff \
-#	tests/fff \
 # --- MOCKS_SRC_DIRS ---
 # MOCKS_SRC_DIRS specifies a directories where you can put your
 # mocks, stubs and fakes.  You can also just put them
@@ -47,16 +40,13 @@ TEST_SRC_DIRS += tests/io-cppumock
 MOCKS_SRC_DIRS +=
 
 # Turn on CppUMock
-CPPUTEST_USE_EXTENSIONS = Y
+CPPUTEST_USE_EXTENSIONS = N
 
 # INCLUDE_DIRS are searched in order after the included file's
 # containing directory
-INCLUDE_DIRS += $(CPPUTEST_HOME)/include
-INCLUDE_DIRS += $(CPPUTEST_HOME)/include/Platforms/Gcc
-INCLUDE_DIRS += example-include
-INCLUDE_DIRS += example-fff
-INCLUDE_DIRS += tests/exploding-fakes
-INCLUDE_DIRS += tests/fff
+INCLUDE_DIRS = \
+	$(CPPUTEST_HOME)/include \
+	include
 
 
 # --- CPPUTEST_OBJS_DIR ---
@@ -75,7 +65,6 @@ INCLUDE_DIRS += tests/fff
 # This is kind of a kludge, but it causes the
 # .o and .d files to be put under objs.
 CPPUTEST_OBJS_DIR = test-obj
-
 CPPUTEST_LIB_DIR = test-lib
 
 # You may have to tweak these compiler flags
