@@ -46,7 +46,8 @@ CPPUTEST_USE_EXTENSIONS = N
 # containing directory
 INCLUDE_DIRS = \
 	$(CPPUTEST_HOME)/include \
-	include
+	include \
+	src
 
 
 # --- CPPUTEST_OBJS_DIR ---
