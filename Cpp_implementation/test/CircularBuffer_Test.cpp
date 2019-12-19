@@ -10,7 +10,7 @@ TEST_GROUP(CircularBuffer)
 
 TEST(CircularBuffer, InitiCbufClassWithBufferAndSize)
 {
-	circular_buffer test_cbuf(size);
+	circular_buffer<uint8_t> test_cbuf(size);
 
 	CHECK_EQUAL(size, test_cbuf.size());
 }
