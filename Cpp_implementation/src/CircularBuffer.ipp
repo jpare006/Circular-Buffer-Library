@@ -37,3 +37,15 @@ bool circular_buffer<T>::empty()
 	}
 	return false;
 }
+
+template <class T>
+void circular_buffer<T>::put(T data)
+{
+	buffer_[0] = data;
+}
+
+template <class T>
+T circular_buffer<T>::get()
+{
+	return buffer_[0];
+}

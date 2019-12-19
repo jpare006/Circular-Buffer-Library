@@ -10,6 +10,8 @@ class circular_buffer
 		~circular_buffer();
 		bool full();
 		bool empty();
+		void put(T data);
+		T get();
 	private:
 		T max_size_;
 		T * buffer_;
