@@ -3,18 +3,37 @@
 template <class T>
 circular_buffer<T>::circular_buffer(size_t s)
 {
-	max_size = s;
-	buffer = new T[s];
+	max_size_ = s;
+	buffer_ = new T[s];
+	full_ = false;
+	head_ = 0;
+	tail_ = 0;
 }
 
 template <class T>
 circular_buffer<T>::~circular_buffer()
 {
-	delete[] buffer;
+	delete[] buffer_;
 }
 
 template <class T>
 size_t circular_buffer<T>::size()
 {
-	return max_size;
+	return max_size_;
+}
+
+template <class T>
+bool circular_buffer<T>::full()
+{
+	return full_;
+}
+
+template <class T>
+bool circular_buffer<T>::empty()
+{
+	if((head_ == tail_) && !full_)
+	{
+		return true;
+	}
+	return false;
 }

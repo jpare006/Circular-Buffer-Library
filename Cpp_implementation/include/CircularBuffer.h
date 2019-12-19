@@ -8,9 +8,14 @@ class circular_buffer
 		size_t size();
 		circular_buffer(size_t s);
 		~circular_buffer();
+		bool full();
+		bool empty();
 	private:
-		T max_size;
-		T * buffer;
+		T max_size_;
+		T * buffer_;
+		bool full_;
+		int head_;
+		int tail_;
 };
 
 //templates must have their declaration and implementation in one header file
