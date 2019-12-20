@@ -66,16 +66,17 @@ T circular_buffer<T>::get()
 template <class T>
 void circular_buffer<T>::advance_tail()
 {
-	if((tail_+ 1) == max_size_)
+	if(full_)
 	{
-		full_ = true;
+		head_ = head_ + 1;
 	}
-	tail_ += 1;
+	tail_ = (tail_ + 1) % max_size_;
+	full_ = (head_ == tail_);
 }
 
 template <class T>
 void circular_buffer<T>::advance_head()
 {
-	head_ += 1;
+	head_ = (head_ + 1) % max_size_;
 }
 //********* end private methods *********//
