@@ -1,5 +1,6 @@
 #include "CircularBuffer.h"
 
+//********* public methods *********//
 template <class T>
 circular_buffer<T>::circular_buffer(size_t s)
 {
@@ -43,7 +44,7 @@ void circular_buffer<T>::put(T data)
 {
 	buffer_[tail_] = data;
 
-	tail_ += 1;
+	advance_tail();
 }
 
 template <class T>
@@ -52,7 +53,29 @@ T circular_buffer<T>::get()
 	T read_data;
 
 	read_data = buffer_[head_];
-	head_ += 1;
+	advance_head();
 
 	return read_data;
 }
+
+//********* end public methods *********//
+
+
+
+//********* private methods *********//
+template <class T>
+void circular_buffer<T>::advance_tail()
+{
+	if((tail_+ 1) == max_size_)
+	{
+		full_ = true;
+	}
+	tail_ += 1;
+}
+
+template <class T>
+void circular_buffer<T>::advance_head()
+{
+	head_ += 1;
+}
+//********* end private methods *********//

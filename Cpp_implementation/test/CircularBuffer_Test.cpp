@@ -6,6 +6,18 @@ static const size_t size = 5;
 static uint8_t data[] = {1,2,3,4,5};
 static uint8_t read_data;
 
+//************* Helper functions *************//
+// void fill_buffer(circular_buffer& test_cbuf)
+// {
+// 	for(size_t i = 0; i < size; i++)
+// 	{
+// 		test_cbuf.put(data[i]);
+// 	}
+// }
+
+//************* end helper *************//
+
+
 TEST_GROUP(CircularBuffer)
 {
 };
@@ -48,6 +60,19 @@ TEST(CircularBuffer, AddandReadMultipleDataElements)
 	LONGS_EQUAL(data[0], test_cbuf.get());
 	LONGS_EQUAL(data[1], test_cbuf.get());
 	LONGS_EQUAL(data[2], test_cbuf.get());
+}
+
+TEST(CircularBuffer, FullFlagSetWhenCbufFull)
+{
+	circular_buffer<uint8_t> test_cbuf(size);
+
+	//fill_buffer(test_cbuf);
+	for(size_t i = 0; i < size; i++)
+	{
+		test_cbuf.put(data[i]);
+	}
+
+	CHECK(test_cbuf.full());
 }
 
 //************* end tests *************//
