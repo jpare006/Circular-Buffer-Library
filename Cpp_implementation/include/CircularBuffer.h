@@ -5,7 +5,7 @@ template <class T>
 class circular_buffer
 {
 	public:
-		size_t size();
+		size_t capacity();
 		circular_buffer(size_t s);
 		~circular_buffer();
 		bool full();

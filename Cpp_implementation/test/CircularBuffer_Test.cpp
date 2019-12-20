@@ -16,7 +16,7 @@ TEST(CircularBuffer, InitiCbufClassWithBufferAndSize)
 {
 	circular_buffer<uint8_t> test_cbuf(size);
 
-	CHECK_EQUAL(size, test_cbuf.size());
+	CHECK_EQUAL(size, test_cbuf.capacity());
 }
 
 TEST(CircularBuffer, CbufStateAfterInitIsEmpty)
@@ -35,7 +35,19 @@ TEST(CircularBuffer, AddFirstDataElementToCbufAndReadIt)
 	read_data = test_cbuf.get();
 
 	LONGS_EQUAL(data[0], read_data);
+}
 
+TEST(CircularBuffer, AddandReadMultipleDataElements)
+{
+	circular_buffer<uint8_t> test_cbuf(size);
+	
+	test_cbuf.put(data[0]);
+	test_cbuf.put(data[1]);
+	test_cbuf.put(data[2]);
+
+	LONGS_EQUAL(data[0], test_cbuf.get());
+	LONGS_EQUAL(data[1], test_cbuf.get());
+	LONGS_EQUAL(data[2], test_cbuf.get());
 }
 
 //************* end tests *************//

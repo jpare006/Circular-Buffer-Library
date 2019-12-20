@@ -17,7 +17,7 @@ circular_buffer<T>::~circular_buffer()
 }
 
 template <class T>
-size_t circular_buffer<T>::size()
+size_t circular_buffer<T>::capacity()
 {
 	return max_size_;
 }
@@ -41,11 +41,18 @@ bool circular_buffer<T>::empty()
 template <class T>
 void circular_buffer<T>::put(T data)
 {
-	buffer_[0] = data;
+	buffer_[tail_] = data;
+
+	tail_ += 1;
 }
 
 template <class T>
 T circular_buffer<T>::get()
 {
-	return buffer_[0];
+	T read_data;
+
+	read_data = buffer_[head_];
+	head_ += 1;
+
+	return read_data;
 }
