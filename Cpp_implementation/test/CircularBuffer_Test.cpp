@@ -7,7 +7,7 @@ static uint8_t data[] = {1,2,3,4,5};
 static uint8_t read_data;
 
 //************* Helper functions *************//
-void fill_buffer(circular_buffer<uint8_t>& test_cbuf)
+static void fill_buffer(circular_buffer<uint8_t>& test_cbuf)
 {
 	for(size_t i = 0; i < size; i++)
 	{
@@ -15,11 +15,20 @@ void fill_buffer(circular_buffer<uint8_t>& test_cbuf)
 	}
 }
 
-void fill_buffer_num_elements(circular_buffer<uint8_t>& test_cbuf, uint8_t num)
+static void fill_buffer_num_elements(circular_buffer<uint8_t>& test_cbuf, uint8_t num)
 {
 	for(uint8_t i = 0; i < num; i++)
 	{
 		test_cbuf.put(i);
+	}
+}
+
+//c++ syntax requires paranthesis for arrays when passed by reference
+static void get_all_elems(circular_buffer<uint8_t>& test_cbuf, uint8_t (&data)[size])
+{
+	for(size_t i = 0; i < size; i++)
+	{
+		data[i] = test_cbuf.get();
 	}
 }
 
@@ -88,17 +97,13 @@ TEST(CircularBuffer, OverwriteOldestElementsWhenPutCalledAfterCbufFull)
 	test_cbuf.put(7);
 
 	uint8_t read_data_arr[size];
-	for(size_t i = 0; i < size; i++)
-	{
-		read_data_arr[i] = test_cbuf.get();
-	}
+	get_all_elems(test_cbuf, read_data_arr);
 
 	uint8_t expected_data[size] = {3,4,5,6,7};
 	for(size_t i = 0; i < size; i++)
 	{
 		LONGS_EQUAL(expected_data[i], read_data_arr[i]);
 	}
-
 }
 
 TEST(CircularBuffer, HeadPointerRollsOverAfterMaxSizeAmountElementsOverwritten)
@@ -108,10 +113,7 @@ TEST(CircularBuffer, HeadPointerRollsOverAfterMaxSizeAmountElementsOverwritten)
 	fill_buffer_num_elements(test_cbuf, (size * 2) + 1);
 
 	uint8_t read_data_arr[size];
-	for(size_t i = 0; i < size; i++)
-	{
-		read_data_arr[i] = test_cbuf.get();
-	}
+	get_all_elems(test_cbuf, read_data_arr);
 
 	uint8_t expected_data[] = {6,7,8,9,10};
 	for(size_t i = 0; i < size; i++)
@@ -119,5 +121,4 @@ TEST(CircularBuffer, HeadPointerRollsOverAfterMaxSizeAmountElementsOverwritten)
 		LONGS_EQUAL(expected_data[i], read_data_arr[i]);
 	}
 }
-
 //************* end tests *************//
