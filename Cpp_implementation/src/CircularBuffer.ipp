@@ -68,7 +68,7 @@ void circular_buffer<T>::advance_tail()
 {
 	if(full_)
 	{
-		head_ = head_ + 1;
+		head_ = (head_ + 1) % max_size_;
 	}
 	tail_ = (tail_ + 1) % max_size_;
 	full_ = (head_ == tail_);

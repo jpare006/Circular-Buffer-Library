@@ -15,6 +15,14 @@ void fill_buffer(circular_buffer<uint8_t>& test_cbuf)
 	}
 }
 
+void fill_buffer_num_elements(circular_buffer<uint8_t>& test_cbuf, uint8_t num)
+{
+	for(uint8_t i = 0; i < num; i++)
+	{
+		test_cbuf.put(i);
+	}
+}
+
 //************* end helper *************//
 
 
@@ -91,6 +99,25 @@ TEST(CircularBuffer, OverwriteOldestElementsWhenPutCalledAfterCbufFull)
 		LONGS_EQUAL(expected_data[i], read_data_arr[i]);
 	}
 
+}
+
+TEST(CircularBuffer, HeadPointerRollsOverAfterMaxSizeAmountElementsOverwritten)
+{
+	circular_buffer<uint8_t> test_cbuf(size);
+
+	fill_buffer_num_elements(test_cbuf, (size * 2) + 1);
+
+	uint8_t read_data_arr[size];
+	for(size_t i = 0; i < size; i++)
+	{
+		read_data_arr[i] = test_cbuf.get();
+	}
+
+	uint8_t expected_data[] = {6,7,8,9,10};
+	for(size_t i = 0; i < size; i++)
+	{
+		LONGS_EQUAL(expected_data[i], read_data_arr[i]);
+	}
 }
 
 //************* end tests *************//
