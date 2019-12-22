@@ -143,4 +143,13 @@ TEST(CircularBuffer, FullFlagSetToZeroAfterReadOccurs)
 
 	CHECK(test_cbuf.full() == false);
 }
+
+TEST(CircularBuffer, GetWhenBufferEmptyReturnsEmptyValue)
+{
+	circular_buffer<uint8_t> test_cbuf(size);
+
+	uint8_t val = test_cbuf.get();
+
+	CHECK_EQUAL(uint8_t(), val);
+}
 //************* end tests *************//

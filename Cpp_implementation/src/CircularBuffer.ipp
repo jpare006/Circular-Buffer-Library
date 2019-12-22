@@ -50,9 +50,11 @@ void circular_buffer<T>::put(T data)
 template <class T>
 T circular_buffer<T>::get()
 {
-	T read_data;
-
-	read_data = buffer_[head_];
+	if (empty())
+	{
+		return T();
+	}
+	T read_data = buffer_[head_];
 	advance_head();
 
 	return read_data;
