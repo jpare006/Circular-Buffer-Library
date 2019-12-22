@@ -152,4 +152,46 @@ TEST(CircularBuffer, GetWhenBufferEmptyReturnsEmptyValue)
 
 	CHECK_EQUAL(uint8_t(), val);
 }
+
+TEST(CircularBuffer, SizeMethodReturnsZeroWhenCbufEmpty)
+{
+	circular_buffer<uint8_t> test_cbuf(size);
+
+	int val = test_cbuf.size();
+	CHECK(val == 0);
+}
+
+TEST(CircularBuffer, SizeMethodReturnMaxSizeWhenCbufFull)
+{
+	circular_buffer<uint8_t> test_cbuf(size);
+
+	fill_buffer(test_cbuf);
+	CHECK(test_cbuf.size() == test_cbuf.capacity());
+}
+
+TEST(CircularBuffer, CallToSizeMethodWhenTailGreaterThanHead)
+{
+	circular_buffer<uint8_t> test_cbuf(size);
+
+	//tail will equal 2, and head = 0
+	test_cbuf.put(data[0]);
+	test_cbuf.put(data[1]);
+
+	size_t size_cbuf = test_cbuf.size();
+	CHECK(size_cbuf  == 2);
+}
+
+TEST(CircularBuffer, CallToSizeMethodTailLessThanHead)
+{
+	circular_buffer<uint8_t> test_cbuf(size);
+
+	//1 overwrite will occur, tail will = 1 and head = 1: full flag is set
+	fill_buffer_num_elements(test_cbuf, size + 1);
+	//make to reads so tail = 1 and head = 3: full flag no longer set
+	test_cbuf.get();
+	test_cbuf.get();
+	size_t size_cbuf = test_cbuf.size();
+
+	CHECK(size_cbuf == 3);
+}
 //************* end tests *************//

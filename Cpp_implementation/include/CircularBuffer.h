@@ -13,6 +13,7 @@ class circular_buffer
 		void put(T data);
 		T get();
 		void reset();
+		size_t size();
 	private:
 		void advance_tail();
 		void advance_head();

@@ -68,6 +68,27 @@ void circular_buffer<T>::reset()
 	full_ = false;
 }
 
+template <class T>
+size_t circular_buffer<T>::size()
+{
+	if (full_)
+	{
+		return max_size_;
+	}
+	else if(tail_ > head_)
+	{
+		return tail_ - head_;
+	}
+	else if (tail_ < head_)
+	{
+		return (max_size_ - head_) + tail_;
+	}
+	else 
+	{
+		return 0;
+	}
+}
+
 //********* end public methods *********//
 
 
