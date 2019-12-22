@@ -58,6 +58,14 @@ T circular_buffer<T>::get()
 	return read_data;
 }
 
+template <class T>
+void circular_buffer<T>::reset()
+{
+	head_ = 0;
+	tail_ = 0;
+	full_ = false;
+}
+
 //********* end public methods *********//
 
 

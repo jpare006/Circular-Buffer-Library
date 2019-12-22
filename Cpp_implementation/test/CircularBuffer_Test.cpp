@@ -121,4 +121,16 @@ TEST(CircularBuffer, HeadPointerRollsOverAfterMaxSizeAmountElementsOverwritten)
 		LONGS_EQUAL(expected_data[i], read_data_arr[i]);
 	}
 }
+
+TEST(CircularBuffer, ResetMethodSetsHeadAndTailToZeroAndFullFlagToFalse)
+{
+	circular_buffer<uint8_t> test_cbuf(size);
+
+	fill_buffer(test_cbuf);
+	CHECK(test_cbuf.full() == true);
+
+	test_cbuf.reset();
+	CHECK(test_cbuf.empty() == true);
+	CHECK(test_cbuf.full() == false);
+}
 //************* end tests *************//
