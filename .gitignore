@@ -1,1 +1,4 @@
-AllTests.out
+C_implementation/AllTests.out
+Cpp_implementation/CircularBuffer_tests
+Cpp_implementation/test-lib
+Cpp_implementation/test-obj
