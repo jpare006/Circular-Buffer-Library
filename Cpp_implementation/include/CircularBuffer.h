@@ -4,24 +4,24 @@
 template <class T>
 class circular_buffer
 {
-	public:
-		size_t capacity();
-		circular_buffer(size_t s);
-		~circular_buffer();
-		bool full();
-		bool empty();
-		void put(T data);
-		T get();
-		void reset();
-		size_t size();
-	private:
-		void advance_tail();
-		void advance_head();
-		T max_size_;
-		T * buffer_;
-		bool full_;
-		int head_;
-		int tail_;
+    public:
+        size_t capacity();
+        circular_buffer(size_t s);
+        ~circular_buffer();
+        bool full();
+        bool empty();
+        void put(T data);
+        T get();
+        void reset();
+        size_t size();
+    private:
+        void advance_tail();
+        void advance_head();
+        T max_size_;
+        T * buffer_;
+        bool full_;
+        int head_;
+        int tail_;
 };
 
 //templates must have their declaration and implementation in one header file
