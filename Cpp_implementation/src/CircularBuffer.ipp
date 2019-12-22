@@ -86,5 +86,6 @@ template <class T>
 void circular_buffer<T>::advance_head()
 {
 	head_ = (head_ + 1) % max_size_;
+	full_ = false;
 }
 //********* end private methods *********//

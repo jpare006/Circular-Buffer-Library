@@ -133,4 +133,14 @@ TEST(CircularBuffer, ResetMethodSetsHeadAndTailToZeroAndFullFlagToFalse)
 	CHECK(test_cbuf.empty() == true);
 	CHECK(test_cbuf.full() == false);
 }
+
+TEST(CircularBuffer, FullFlagSetToZeroAfterReadOccurs)
+{
+	circular_buffer<uint8_t> test_cbuf(size);
+
+	fill_buffer(test_cbuf);
+	test_cbuf.get();
+
+	CHECK(test_cbuf.full() == false);
+}
 //************* end tests *************//
