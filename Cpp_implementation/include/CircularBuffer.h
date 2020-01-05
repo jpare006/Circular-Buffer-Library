@@ -1,3 +1,10 @@
+/** @file CircularBuffer.h
+ * 
+ * @brief 
+ * Circular buffer library for embedded systems. Uses class template to support
+ * various data types. 
+ */
+#incl
 #ifndef _CIRCULAR_BUFFER_H_
 #define _CIRCULAR_BUFFER_H_
 
@@ -14,14 +21,18 @@ class circular_buffer
         T get();
         void reset();
         size_t size();
+
+    // Reads from the circular buffer happen at the index kept in "head" of the buffer.
+    // Writes happen at the tail of the buffer.
+    //
     private:
         void advance_tail();
         void advance_head();
-        T max_size_;
-        T * buffer_;
-        bool full_;
-        int head_;
-        int tail_;
+        T max_size;
+        T * p_buffer;
+        bool b_is_buffer_full;
+        int head;
+        int tail;
 };
 
 //templates must have their declaration and implementation in one header file
@@ -31,3 +42,5 @@ class circular_buffer
 #include "CircularBuffer.ipp"
 
 #endif /* _CIRCULAR_BUFFER_H_ */
+
+/*** end of file ***/
