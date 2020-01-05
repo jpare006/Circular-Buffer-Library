@@ -4,7 +4,6 @@
  * Circular buffer library for embedded systems. Uses class template to support
  * various data types. 
  */
-#incl
 #ifndef _CIRCULAR_BUFFER_H_
 #define _CIRCULAR_BUFFER_H_
 
