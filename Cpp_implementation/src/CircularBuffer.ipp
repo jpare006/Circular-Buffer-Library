@@ -8,7 +8,7 @@
 
 /*!
  * @brief Circular buffer constructor
- * @param[in] s Size with witch to init buffer
+ * @param[in] s Size with which to initialize buffer
  */
 template <class T>
 circular_buffer<T>::circular_buffer (size_t s)
