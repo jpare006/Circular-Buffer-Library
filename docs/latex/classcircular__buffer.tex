@@ -1,0 +1,262 @@
+\hypertarget{classcircular__buffer}{}\doxysection{circular\+\_\+buffer$<$ T $>$ Class Template Reference}
+\label{classcircular__buffer}\index{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classcircular__buffer_a465841896e28c012d97a3cf310db0681}{capacity}} ()
+\begin{DoxyCompactList}\small\item\em Find the maximum number of elements the circular buffer can store. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcircular__buffer_a594f6657ac9727fa0af2a1d29f73c555}{circular\+\_\+buffer}} (size\+\_\+t s)
+\begin{DoxyCompactList}\small\item\em Circular buffer constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcircular__buffer_a6fa47d36777b9522904c0b6165d3183f}\label{classcircular__buffer_a6fa47d36777b9522904c0b6165d3183f}} 
+\mbox{\hyperlink{classcircular__buffer_a6fa47d36777b9522904c0b6165d3183f}{$\sim$circular\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Circular buffer destructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classcircular__buffer_ab8b410b7d57a2bbbb8ab579c6652f4b5}{full}} ()
+\begin{DoxyCompactList}\small\item\em Check if the circular buffer is full or not. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classcircular__buffer_a60e8f2dab4962058993e3115f9443156}{empty}} ()
+\item 
+void \mbox{\hyperlink{classcircular__buffer_ae5d29763e018e9b282fee976724db2c0}{put}} (T data)
+\begin{DoxyCompactList}\small\item\em Place a single data element into the underlying buffer. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{classcircular__buffer_ac6201665581ad80407269e83e5cbdf35}{get}} ()
+\begin{DoxyCompactList}\small\item\em Read the next value in the circular buffer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcircular__buffer_acc29c0f342fa153d64561b622e3cf3d4}\label{classcircular__buffer_acc29c0f342fa153d64561b622e3cf3d4}} 
+void \mbox{\hyperlink{classcircular__buffer_acc29c0f342fa153d64561b622e3cf3d4}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Reset the circular buffer to its initial state. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classcircular__buffer_aa811bdb9689dccbf2e34f9478a9b4bad}{size}} ()
+\begin{DoxyCompactList}\small\item\em Calculate the current number of elements in the circular buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class circular\+\_\+buffer$<$ T $>$}
+
+
+
+Definition at line 12 of file Circular\+Buffer.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcircular__buffer_a594f6657ac9727fa0af2a1d29f73c555}\label{classcircular__buffer_a594f6657ac9727fa0af2a1d29f73c555}} 
+\index{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!circular\_buffer@{circular\_buffer}}
+\index{circular\_buffer@{circular\_buffer}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{circular\_buffer()}{circular\_buffer()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classcircular__buffer}{circular\+\_\+buffer}}$<$ T $>$\+::\mbox{\hyperlink{classcircular__buffer}{circular\+\_\+buffer}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{s }\end{DoxyParamCaption})}
+
+
+
+Circular buffer constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em s} & Size with which to initialize buffer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 14 of file Circular\+Buffer.\+ipp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     max\_size = s;}
+\DoxyCodeLine{17     p\_buffer = \textcolor{keyword}{new} T[s];}
+\DoxyCodeLine{18     b\_is\_buffer\_full = \textcolor{keyword}{false};}
+\DoxyCodeLine{19     head = 0;}
+\DoxyCodeLine{20     tail = 0;}
+\DoxyCodeLine{21 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcircular__buffer_a465841896e28c012d97a3cf310db0681}\label{classcircular__buffer_a465841896e28c012d97a3cf310db0681}} 
+\index{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!capacity@{capacity}}
+\index{capacity@{capacity}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{capacity()}{capacity()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classcircular__buffer}{circular\+\_\+buffer}}$<$ T $>$\+::capacity}
+
+
+
+Find the maximum number of elements the circular buffer can store. 
+
+\begin{DoxyReturn}{Returns}
+Maximum size of the circular buffer. 
+\end{DoxyReturn}
+
+
+Definition at line 37 of file Circular\+Buffer.\+ipp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39     \textcolor{keywordflow}{return} max\_size;}
+\DoxyCodeLine{40 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcircular__buffer_a60e8f2dab4962058993e3115f9443156}\label{classcircular__buffer_a60e8f2dab4962058993e3115f9443156}} 
+\index{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!empty@{empty}}
+\index{empty@{empty}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classcircular__buffer}{circular\+\_\+buffer}}$<$ T $>$\+::empty}
+
+@breif Check if circular buffer is empty or not. \begin{DoxyReturn}{Returns}
+Boolean value answering if circular buffer is empty or not. 
+\end{DoxyReturn}
+
+
+Definition at line 57 of file Circular\+Buffer.\+ipp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{58 \{}
+\DoxyCodeLine{59     \textcolor{keywordflow}{if} ((head == tail) \&\& !b\_is\_buffer\_full)}
+\DoxyCodeLine{60     \{}
+\DoxyCodeLine{61         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{62     \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{65 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcircular__buffer_ab8b410b7d57a2bbbb8ab579c6652f4b5}\label{classcircular__buffer_ab8b410b7d57a2bbbb8ab579c6652f4b5}} 
+\index{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!full@{full}}
+\index{full@{full}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{full()}{full()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classcircular__buffer}{circular\+\_\+buffer}}$<$ T $>$\+::full}
+
+
+
+Check if the circular buffer is full or not. 
+
+\begin{DoxyReturn}{Returns}
+Boolean value answering if circular buffer is full or not. 
+\end{DoxyReturn}
+
+
+Definition at line 47 of file Circular\+Buffer.\+ipp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{48 \{}
+\DoxyCodeLine{49     \textcolor{keywordflow}{return} b\_is\_buffer\_full;}
+\DoxyCodeLine{50 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcircular__buffer_ac6201665581ad80407269e83e5cbdf35}\label{classcircular__buffer_ac6201665581ad80407269e83e5cbdf35}} 
+\index{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!get@{get}}
+\index{get@{get}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T \mbox{\hyperlink{classcircular__buffer}{circular\+\_\+buffer}}$<$ T $>$\+::get}
+
+
+
+Read the next value in the circular buffer. 
+
+\begin{DoxyReturn}{Returns}
+Value read from buffer. 
+\end{DoxyReturn}
+
+
+Definition at line 84 of file Circular\+Buffer.\+ipp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{85 \{}
+\DoxyCodeLine{86     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classcircular__buffer_a60e8f2dab4962058993e3115f9443156}{empty}}())}
+\DoxyCodeLine{87     \{}
+\DoxyCodeLine{88         \textcolor{keywordflow}{return} T();}
+\DoxyCodeLine{89     \}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     T value = p\_buffer[head];}
+\DoxyCodeLine{92     advance\_head();}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{95 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcircular__buffer_ae5d29763e018e9b282fee976724db2c0}\label{classcircular__buffer_ae5d29763e018e9b282fee976724db2c0}} 
+\index{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!put@{put}}
+\index{put@{put}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{put()}{put()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classcircular__buffer}{circular\+\_\+buffer}}$<$ T $>$\+::put (\begin{DoxyParamCaption}\item[{T}]{data }\end{DoxyParamCaption})}
+
+
+
+Place a single data element into the underlying buffer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data} & Data element to be stored in circular buffer. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 72 of file Circular\+Buffer.\+ipp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{73 \{}
+\DoxyCodeLine{74     p\_buffer[tail] = data;}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     advance\_tail();}
+\DoxyCodeLine{77 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcircular__buffer_aa811bdb9689dccbf2e34f9478a9b4bad}\label{classcircular__buffer_aa811bdb9689dccbf2e34f9478a9b4bad}} 
+\index{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!size@{size}}
+\index{size@{size}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classcircular__buffer}{circular\+\_\+buffer}}$<$ T $>$\+::size}
+
+
+
+Calculate the current number of elements in the circular buffer. 
+
+\begin{DoxyReturn}{Returns}
+Number of elements currently in circular buffer. 
+\end{DoxyReturn}
+
+
+Definition at line 113 of file Circular\+Buffer.\+ipp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{114 \{}
+\DoxyCodeLine{115     \textcolor{keywordtype}{size\_t} value = -\/1;}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117     \textcolor{keywordflow}{if} (b\_is\_buffer\_full)}
+\DoxyCodeLine{118     \{}
+\DoxyCodeLine{119         value = max\_size;}
+\DoxyCodeLine{120     \}}
+\DoxyCodeLine{121     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tail > head)}
+\DoxyCodeLine{122     \{}
+\DoxyCodeLine{123         value = tail -\/ head;}
+\DoxyCodeLine{124     \}}
+\DoxyCodeLine{125     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tail < head)}
+\DoxyCodeLine{126     \{}
+\DoxyCodeLine{127         \textcolor{comment}{//Use buffer max value to calculate amount of elements}}
+\DoxyCodeLine{128         value = (max\_size -\/ head) + tail;}
+\DoxyCodeLine{129     \}}
+\DoxyCodeLine{130     \textcolor{keywordflow}{else} }
+\DoxyCodeLine{131     \{}
+\DoxyCodeLine{132         \textcolor{comment}{//At this point, the only option left is: (tail == head  == 0) \&\& !full}}
+\DoxyCodeLine{133         value = 0;}
+\DoxyCodeLine{134     \}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136     \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{137 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Cpp\+\_\+implementation/include/\mbox{\hyperlink{Cpp__implementation_2include_2CircularBuffer_8h}{Circular\+Buffer.\+h}}\item 
+Cpp\+\_\+implementation/src/\mbox{\hyperlink{CircularBuffer_8ipp}{Circular\+Buffer.\+ipp}}\end{DoxyCompactItemize}

@@ -1,0 +1,360 @@
+\hypertarget{CircularBuffer_8c}{}\doxysection{C\+\_\+implementation/src/\+Circular\+Buffer.c File Reference}
+\label{CircularBuffer_8c}\index{C\_implementation/src/CircularBuffer.c@{C\_implementation/src/CircularBuffer.c}}
+
+
+Circular buffer library for embedded systems. Supports uint8\+\_\+t elements. Functions can be easily modified to support the required data type.  
+
+
+{\ttfamily \#include \char`\"{}Circular\+Buffer.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcircular__buf__t}{circular\+\_\+buf\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{CircularBuffer_8c_a06fc87d81c62e9abb8790b6e5713c55b}\label{CircularBuffer_8c_a06fc87d81c62e9abb8790b6e5713c55b}} 
+enum \{ {\bfseries T\+R\+UE} = 1, 
+{\bfseries F\+A\+L\+SE} = 0
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}} \mbox{\hyperlink{CircularBuffer_8c_a27b7a22d19788bc553a38fd69c798fda}{circular\+\_\+buf\+\_\+init}} (uint8\+\_\+t $\ast$p\+\_\+buffer, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Initialize the circular buffer structure with user declared buffer and size. \end{DoxyCompactList}\item 
+B\+O\+OL \mbox{\hyperlink{CircularBuffer_8c_a919a3c3be442ccb87aa5c89055b6d36a}{circular\+\_\+buf\+\_\+empty}} (\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}} cbuf)
+\begin{DoxyCompactList}\small\item\em Check if circular buffer is empty or not. \end{DoxyCompactList}\item 
+B\+O\+OL \mbox{\hyperlink{CircularBuffer_8c_a50e9e03105246c53c670679056e2f023}{circular\+\_\+buf\+\_\+full}} (\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}} cbuf)
+\begin{DoxyCompactList}\small\item\em Check if circular buffer is full or not. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{CircularBuffer_8c_a0058fbbe692b10d88496884ef413e91a}{circular\+\_\+buf\+\_\+put}} (\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}} cbuf, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Place a single data element into the underlying buffer. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{CircularBuffer_8c_af5465fdf96654b240e7e4921b810e529}{circular\+\_\+buf\+\_\+capacity}} (\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}} cbuf)
+\begin{DoxyCompactList}\small\item\em Find the maximum number of elements the circular buffer can store. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{CircularBuffer_8c_ae552db9c0903b4cad7c47035925e8c84}{circular\+\_\+buf\+\_\+reset}} (\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}} cbuf)
+\begin{DoxyCompactList}\small\item\em Reset the circular buffer to its initial state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{CircularBuffer_8c_a436198669549c9702ab6189043a7641e}{circular\+\_\+buf\+\_\+get}} (\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}} cbuf, uint8\+\_\+t $\ast$p\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Read the next value in the circular buffer. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{CircularBuffer_8c_a62eb8e75c501a47bfb98b6fbf07806c1}{circular\+\_\+buf\+\_\+size}} (\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}} cbuf)
+\begin{DoxyCompactList}\small\item\em Calculate the current number of elements in the circular buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{CircularBuffer_8c_affbc3f94ef8221cd65031212b6f3067a}{circular\+\_\+buf\+\_\+free}} (\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}} cbuf)
+\begin{DoxyCompactList}\small\item\em Free memory that was allocated during initialization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Circular buffer library for embedded systems. Supports uint8\+\_\+t elements. Functions can be easily modified to support the required data type. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{CircularBuffer_8c_af5465fdf96654b240e7e4921b810e529}\label{CircularBuffer_8c_af5465fdf96654b240e7e4921b810e529}} 
+\index{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_capacity@{circular\_buf\_capacity}}
+\index{circular\_buf\_capacity@{circular\_buf\_capacity}!CircularBuffer.c@{CircularBuffer.c}}
+\doxysubsubsection{\texorpdfstring{circular\_buf\_capacity()}{circular\_buf\_capacity()}}
+{\footnotesize\ttfamily size\+\_\+t circular\+\_\+buf\+\_\+capacity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}}}]{cbuf }\end{DoxyParamCaption})}
+
+
+
+Find the maximum number of elements the circular buffer can store. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cbuf} & Handle for ciruclar buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Maximum size of the circular buffer. 
+\end{DoxyReturn}
+
+
+Definition at line 122 of file Circular\+Buffer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{123 \{}
+\DoxyCodeLine{124     \textcolor{keywordflow}{return} cbuf-\/>max;}
+\DoxyCodeLine{125 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{CircularBuffer_8c_a919a3c3be442ccb87aa5c89055b6d36a}\label{CircularBuffer_8c_a919a3c3be442ccb87aa5c89055b6d36a}} 
+\index{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_empty@{circular\_buf\_empty}}
+\index{circular\_buf\_empty@{circular\_buf\_empty}!CircularBuffer.c@{CircularBuffer.c}}
+\doxysubsubsection{\texorpdfstring{circular\_buf\_empty()}{circular\_buf\_empty()}}
+{\footnotesize\ttfamily B\+O\+OL circular\+\_\+buf\+\_\+empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}}}]{cbuf }\end{DoxyParamCaption})}
+
+
+
+Check if circular buffer is empty or not. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cbuf} & Handle for circular buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean value answering if circular buffer is empty or not. 
+\end{DoxyReturn}
+
+
+Definition at line 83 of file Circular\+Buffer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{84 \{}
+\DoxyCodeLine{85     \textcolor{keywordflow}{if}((cbuf-\/>head == cbuf-\/>tail) \&\& !cbuf-\/>b\_is\_buffer\_full)}
+\DoxyCodeLine{86     \{}
+\DoxyCodeLine{87         \textcolor{keywordflow}{return} TRUE;}
+\DoxyCodeLine{88     \}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \textcolor{keywordflow}{return} FALSE;}
+\DoxyCodeLine{91 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{CircularBuffer_8c_affbc3f94ef8221cd65031212b6f3067a}\label{CircularBuffer_8c_affbc3f94ef8221cd65031212b6f3067a}} 
+\index{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_free@{circular\_buf\_free}}
+\index{circular\_buf\_free@{circular\_buf\_free}!CircularBuffer.c@{CircularBuffer.c}}
+\doxysubsubsection{\texorpdfstring{circular\_buf\_free()}{circular\_buf\_free()}}
+{\footnotesize\ttfamily int circular\+\_\+buf\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}}}]{cbuf }\end{DoxyParamCaption})}
+
+
+
+Free memory that was allocated during initialization. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cbuf} & Hanlde for circular buffer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{}
+It is the users responsibility to call this function at the end of the program once for every time circular\+\_\+buf\+\_\+init was called. 
+\end{DoxyParagraph}
+
+
+Definition at line 198 of file Circular\+Buffer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{199 \{}
+\DoxyCodeLine{200     free(cbuf);}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{203 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{CircularBuffer_8c_a50e9e03105246c53c670679056e2f023}\label{CircularBuffer_8c_a50e9e03105246c53c670679056e2f023}} 
+\index{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_full@{circular\_buf\_full}}
+\index{circular\_buf\_full@{circular\_buf\_full}!CircularBuffer.c@{CircularBuffer.c}}
+\doxysubsubsection{\texorpdfstring{circular\_buf\_full()}{circular\_buf\_full()}}
+{\footnotesize\ttfamily B\+O\+OL circular\+\_\+buf\+\_\+full (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}}}]{cbuf }\end{DoxyParamCaption})}
+
+
+
+Check if circular buffer is full or not. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cbuf} & Handle for circular buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean value answering if circular buffer is full or not. 
+\end{DoxyReturn}
+
+
+Definition at line 98 of file Circular\+Buffer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{99 \{}
+\DoxyCodeLine{100     \textcolor{comment}{// b\_is\_buffer\_full is updated in other functions, therefore, this function }}
+\DoxyCodeLine{101     \textcolor{comment}{// simply returns whatever value is stored in the struct.}}
+\DoxyCodeLine{102     \textcolor{keywordflow}{return} cbuf-\/>b\_is\_buffer\_full;}
+\DoxyCodeLine{103 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{CircularBuffer_8c_a436198669549c9702ab6189043a7641e}\label{CircularBuffer_8c_a436198669549c9702ab6189043a7641e}} 
+\index{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_get@{circular\_buf\_get}}
+\index{circular\_buf\_get@{circular\_buf\_get}!CircularBuffer.c@{CircularBuffer.c}}
+\doxysubsubsection{\texorpdfstring{circular\_buf\_get()}{circular\_buf\_get()}}
+{\footnotesize\ttfamily int circular\+\_\+buf\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}}}]{cbuf,  }\item[{uint8\+\_\+t $\ast$}]{p\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Read the next value in the circular buffer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cbuf} & Handle for circular buffer. \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+\_\+value} & Pointer to var where value that is read is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status indicating wether read was succesful (0) or not (-\/1). 
+\end{DoxyReturn}
+
+
+Definition at line 144 of file Circular\+Buffer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{145 \{}
+\DoxyCodeLine{146     \textcolor{keywordtype}{int} status = -\/1;}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148     \textcolor{keywordflow}{if}(!\mbox{\hyperlink{CircularBuffer_8c_a919a3c3be442ccb87aa5c89055b6d36a}{circular\_buf\_empty}}(cbuf))}
+\DoxyCodeLine{149     \{}
+\DoxyCodeLine{150         status = 0;}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152         *p\_value = cbuf-\/>p\_buffer[cbuf-\/>head];}
+\DoxyCodeLine{153         advance\_head(cbuf);}
+\DoxyCodeLine{154     \}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156     \textcolor{keywordflow}{return} status;}
+\DoxyCodeLine{157 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{CircularBuffer_8c_a27b7a22d19788bc553a38fd69c798fda}\label{CircularBuffer_8c_a27b7a22d19788bc553a38fd69c798fda}} 
+\index{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_init@{circular\_buf\_init}}
+\index{circular\_buf\_init@{circular\_buf\_init}!CircularBuffer.c@{CircularBuffer.c}}
+\doxysubsubsection{\texorpdfstring{circular\_buf\_init()}{circular\_buf\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}} circular\+\_\+buf\+\_\+init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{p\+\_\+buffer,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Initialize the circular buffer structure with user declared buffer and size. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em p\+\_\+buffer} & A pointer to the user declared buffer. \\
+\hline
+\mbox{\texttt{ in}}  & {\em size} & The size of the buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The handle type used to access the circular buffer internals. 
+\end{DoxyReturn}
+
+
+Definition at line 68 of file Circular\+Buffer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69 \{}
+\DoxyCodeLine{70     \mbox{\hyperlink{structcircular__buf__t}{cbuf\_handle\_t}} cbuf = malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structcircular__buf__t}{circular\_buf\_t}}));}
+\DoxyCodeLine{71     cbuf-\/>p\_buffer = p\_buffer;}
+\DoxyCodeLine{72     cbuf-\/>max = size;}
+\DoxyCodeLine{73     \mbox{\hyperlink{CircularBuffer_8c_ae552db9c0903b4cad7c47035925e8c84}{circular\_buf\_reset}}(cbuf);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     \textcolor{keywordflow}{return} cbuf;}
+\DoxyCodeLine{76 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{CircularBuffer_8c_a0058fbbe692b10d88496884ef413e91a}\label{CircularBuffer_8c_a0058fbbe692b10d88496884ef413e91a}} 
+\index{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_put@{circular\_buf\_put}}
+\index{circular\_buf\_put@{circular\_buf\_put}!CircularBuffer.c@{CircularBuffer.c}}
+\doxysubsubsection{\texorpdfstring{circular\_buf\_put()}{circular\_buf\_put()}}
+{\footnotesize\ttfamily void circular\+\_\+buf\+\_\+put (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}}}]{cbuf,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Place a single data element into the underlying buffer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cbuf} & Handle for circular buffer. \\
+\hline
+\mbox{\texttt{ in}}  & {\em data} & Data element to be stored in circular buffer. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 110 of file Circular\+Buffer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{111 \{}
+\DoxyCodeLine{112     cbuf-\/>p\_buffer[cbuf-\/>tail] = data;}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114     advance\_tail(cbuf);}
+\DoxyCodeLine{115 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{CircularBuffer_8c_ae552db9c0903b4cad7c47035925e8c84}\label{CircularBuffer_8c_ae552db9c0903b4cad7c47035925e8c84}} 
+\index{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_reset@{circular\_buf\_reset}}
+\index{circular\_buf\_reset@{circular\_buf\_reset}!CircularBuffer.c@{CircularBuffer.c}}
+\doxysubsubsection{\texorpdfstring{circular\_buf\_reset()}{circular\_buf\_reset()}}
+{\footnotesize\ttfamily void circular\+\_\+buf\+\_\+reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}}}]{cbuf }\end{DoxyParamCaption})}
+
+
+
+Reset the circular buffer to its initial state. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cbuf} & Handle for circular buffer. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 131 of file Circular\+Buffer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{132 \{}
+\DoxyCodeLine{133     cbuf-\/>head = 0;}
+\DoxyCodeLine{134     cbuf-\/>tail = 0;}
+\DoxyCodeLine{135     cbuf-\/>b\_is\_buffer\_full = FALSE;}
+\DoxyCodeLine{136 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{CircularBuffer_8c_a62eb8e75c501a47bfb98b6fbf07806c1}\label{CircularBuffer_8c_a62eb8e75c501a47bfb98b6fbf07806c1}} 
+\index{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_size@{circular\_buf\_size}}
+\index{circular\_buf\_size@{circular\_buf\_size}!CircularBuffer.c@{CircularBuffer.c}}
+\doxysubsubsection{\texorpdfstring{circular\_buf\_size()}{circular\_buf\_size()}}
+{\footnotesize\ttfamily size\+\_\+t circular\+\_\+buf\+\_\+size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcircular__buf__t}{cbuf\+\_\+handle\+\_\+t}}}]{cbuf }\end{DoxyParamCaption})}
+
+
+
+Calculate the current number of elements in the circular buffer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em cbuf} & Handle for circular buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements currently in circular buffer. 
+\end{DoxyReturn}
+
+
+Definition at line 164 of file Circular\+Buffer.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{165 \{}
+\DoxyCodeLine{166     \textcolor{keywordtype}{size\_t} value = 0;}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168     \textcolor{keywordflow}{if}(\mbox{\hyperlink{CircularBuffer_8c_a50e9e03105246c53c670679056e2f023}{circular\_buf\_full}}(cbuf))}
+\DoxyCodeLine{169     \{}
+\DoxyCodeLine{170         value = cbuf-\/>max;}
+\DoxyCodeLine{171     \}}
+\DoxyCodeLine{172     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(cbuf-\/>tail > cbuf-\/>head)}
+\DoxyCodeLine{173     \{}
+\DoxyCodeLine{174         value = cbuf-\/>tail -\/ cbuf-\/>head;}
+\DoxyCodeLine{175     \}}
+\DoxyCodeLine{176     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cbuf-\/>tail < cbuf-\/>head)}
+\DoxyCodeLine{177     \{}
+\DoxyCodeLine{178         \textcolor{comment}{//Use buffer max value to calculate amount of elements}}
+\DoxyCodeLine{179         value = (cbuf-\/>max -\/ cbuf-\/>head) + cbuf-\/>tail;}
+\DoxyCodeLine{180     \}}
+\DoxyCodeLine{181     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{182     \{}
+\DoxyCodeLine{183         \textcolor{comment}{//At this point, the only option left is: (tail == head  == 0) \&\& !full}}
+\DoxyCodeLine{184         value = 0;}
+\DoxyCodeLine{185     \}}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187     \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{188 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,56 @@
+\indexentry{circular\_buf\_t@{circular\_buf\_t}|hyperpage}{7}
+\indexentry{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}|hyperpage}{7}
+\indexentry{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!circular\_buffer@{circular\_buffer}|hyperpage}{8}
+\indexentry{circular\_buffer@{circular\_buffer}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}|hyperpage}{8}
+\indexentry{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!capacity@{capacity}|hyperpage}{8}
+\indexentry{capacity@{capacity}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}|hyperpage}{8}
+\indexentry{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!empty@{empty}|hyperpage}{8}
+\indexentry{empty@{empty}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}|hyperpage}{8}
+\indexentry{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!full@{full}|hyperpage}{9}
+\indexentry{full@{full}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}|hyperpage}{9}
+\indexentry{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!get@{get}|hyperpage}{9}
+\indexentry{get@{get}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}|hyperpage}{9}
+\indexentry{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!put@{put}|hyperpage}{9}
+\indexentry{put@{put}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}|hyperpage}{9}
+\indexentry{circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}!size@{size}|hyperpage}{10}
+\indexentry{size@{size}!circular\_buffer$<$ T $>$@{circular\_buffer$<$ T $>$}|hyperpage}{10}
+\indexentry{C\_implementation/include/CircularBuffer.h@{C\_implementation/include/CircularBuffer.h}|hyperpage}{11}
+\indexentry{CircularBuffer.h@{CircularBuffer.h}!circular\_buf\_capacity@{circular\_buf\_capacity}|hyperpage}{12}
+\indexentry{circular\_buf\_capacity@{circular\_buf\_capacity}!CircularBuffer.h@{CircularBuffer.h}|hyperpage}{12}
+\indexentry{CircularBuffer.h@{CircularBuffer.h}!circular\_buf\_empty@{circular\_buf\_empty}|hyperpage}{12}
+\indexentry{circular\_buf\_empty@{circular\_buf\_empty}!CircularBuffer.h@{CircularBuffer.h}|hyperpage}{12}
+\indexentry{CircularBuffer.h@{CircularBuffer.h}!circular\_buf\_free@{circular\_buf\_free}|hyperpage}{13}
+\indexentry{circular\_buf\_free@{circular\_buf\_free}!CircularBuffer.h@{CircularBuffer.h}|hyperpage}{13}
+\indexentry{CircularBuffer.h@{CircularBuffer.h}!circular\_buf\_full@{circular\_buf\_full}|hyperpage}{13}
+\indexentry{circular\_buf\_full@{circular\_buf\_full}!CircularBuffer.h@{CircularBuffer.h}|hyperpage}{13}
+\indexentry{CircularBuffer.h@{CircularBuffer.h}!circular\_buf\_get@{circular\_buf\_get}|hyperpage}{13}
+\indexentry{circular\_buf\_get@{circular\_buf\_get}!CircularBuffer.h@{CircularBuffer.h}|hyperpage}{13}
+\indexentry{CircularBuffer.h@{CircularBuffer.h}!circular\_buf\_init@{circular\_buf\_init}|hyperpage}{14}
+\indexentry{circular\_buf\_init@{circular\_buf\_init}!CircularBuffer.h@{CircularBuffer.h}|hyperpage}{14}
+\indexentry{CircularBuffer.h@{CircularBuffer.h}!circular\_buf\_put@{circular\_buf\_put}|hyperpage}{15}
+\indexentry{circular\_buf\_put@{circular\_buf\_put}!CircularBuffer.h@{CircularBuffer.h}|hyperpage}{15}
+\indexentry{CircularBuffer.h@{CircularBuffer.h}!circular\_buf\_reset@{circular\_buf\_reset}|hyperpage}{15}
+\indexentry{circular\_buf\_reset@{circular\_buf\_reset}!CircularBuffer.h@{CircularBuffer.h}|hyperpage}{15}
+\indexentry{CircularBuffer.h@{CircularBuffer.h}!circular\_buf\_size@{circular\_buf\_size}|hyperpage}{15}
+\indexentry{circular\_buf\_size@{circular\_buf\_size}!CircularBuffer.h@{CircularBuffer.h}|hyperpage}{15}
+\indexentry{Cpp\_implementation/include/CircularBuffer.h@{Cpp\_implementation/include/CircularBuffer.h}|hyperpage}{16}
+\indexentry{C\_implementation/src/CircularBuffer.c@{C\_implementation/src/CircularBuffer.c}|hyperpage}{16}
+\indexentry{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_capacity@{circular\_buf\_capacity}|hyperpage}{17}
+\indexentry{circular\_buf\_capacity@{circular\_buf\_capacity}!CircularBuffer.c@{CircularBuffer.c}|hyperpage}{17}
+\indexentry{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_empty@{circular\_buf\_empty}|hyperpage}{18}
+\indexentry{circular\_buf\_empty@{circular\_buf\_empty}!CircularBuffer.c@{CircularBuffer.c}|hyperpage}{18}
+\indexentry{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_free@{circular\_buf\_free}|hyperpage}{18}
+\indexentry{circular\_buf\_free@{circular\_buf\_free}!CircularBuffer.c@{CircularBuffer.c}|hyperpage}{18}
+\indexentry{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_full@{circular\_buf\_full}|hyperpage}{19}
+\indexentry{circular\_buf\_full@{circular\_buf\_full}!CircularBuffer.c@{CircularBuffer.c}|hyperpage}{19}
+\indexentry{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_get@{circular\_buf\_get}|hyperpage}{19}
+\indexentry{circular\_buf\_get@{circular\_buf\_get}!CircularBuffer.c@{CircularBuffer.c}|hyperpage}{19}
+\indexentry{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_init@{circular\_buf\_init}|hyperpage}{20}
+\indexentry{circular\_buf\_init@{circular\_buf\_init}!CircularBuffer.c@{CircularBuffer.c}|hyperpage}{20}
+\indexentry{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_put@{circular\_buf\_put}|hyperpage}{20}
+\indexentry{circular\_buf\_put@{circular\_buf\_put}!CircularBuffer.c@{CircularBuffer.c}|hyperpage}{20}
+\indexentry{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_reset@{circular\_buf\_reset}|hyperpage}{21}
+\indexentry{circular\_buf\_reset@{circular\_buf\_reset}!CircularBuffer.c@{CircularBuffer.c}|hyperpage}{21}
+\indexentry{CircularBuffer.c@{CircularBuffer.c}!circular\_buf\_size@{circular\_buf\_size}|hyperpage}{21}
+\indexentry{circular\_buf\_size@{circular\_buf\_size}!CircularBuffer.c@{CircularBuffer.c}|hyperpage}{21}
+\indexentry{Cpp\_implementation/src/CircularBuffer.ipp@{Cpp\_implementation/src/CircularBuffer.ipp}|hyperpage}{22}
