@@ -2,7 +2,8 @@
  * 
  * @brief 
  * Circular buffer library for embedded systems. Supports uint8_t elements.
- * Functions can be easily modified to support the required data type. 
+ * Functions can be easily modified to support the required data type
+ * by editing variable type in "typedef uint8_t TYPE".
  * 
  */
 
@@ -13,7 +14,7 @@ struct circular_buf_t
     // Reads from the circular buffer happen at the index kept in "head" of the buffer.
     // Writes happen at the tail of the buffer.
     //
-    uint8_t * p_buffer;
+    TYPE * p_buffer;
     size_t    head;
     size_t    tail;
     size_t    max; // This variable represents the maximum size of the buffer.
@@ -65,7 +66,7 @@ static void advance_head (cbuf_handle_t cbuf)
  * @param[in] size     The size of the buffer.
  * @return The handle type used to access the circular buffer internals.
  */
-cbuf_handle_t circular_buf_init (uint8_t * p_buffer, size_t size)
+cbuf_handle_t circular_buf_init (TYPE * p_buffer, size_t size)
 {
     cbuf_handle_t cbuf = malloc(sizeof(circular_buf_t));
     cbuf->p_buffer = p_buffer;
@@ -107,7 +108,7 @@ BOOL circular_buf_full (cbuf_handle_t cbuf)
  * @param[in] cbuf Handle for circular buffer.
  * @param[in] data Data element to be stored in circular buffer.
  */
-void circular_buf_put (cbuf_handle_t cbuf, uint8_t data)
+void circular_buf_put (cbuf_handle_t cbuf, TYPE data)
 {
     cbuf->p_buffer[cbuf->tail] = data;
 
@@ -141,7 +142,7 @@ void circular_buf_reset (cbuf_handle_t cbuf)
  * @param[in] p_value Pointer to var where value that is read is to be stored.
  * @return Status indicating wether read was succesful (0) or not (-1).
  */
-int circular_buf_get (cbuf_handle_t cbuf, uint8_t * p_value)
+int circular_buf_get (cbuf_handle_t cbuf, TYPE * p_value)
 {
     int status = -1;
 
